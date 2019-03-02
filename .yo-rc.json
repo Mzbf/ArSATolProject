@@ -1,0 +1,35 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "com.arsatoll.app"
+        },
+        "jhipsterVersion": "5.8.1",
+        "applicationType": "monolith",
+        "baseName": "arsatollservice",
+        "packageName": "com.arsatoll.app",
+        "packageFolder": "com/arsatoll/app",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "ehcache",
+        "enableHibernateCache": true,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mysql",
+        "prodDatabaseType": "mysql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "Y2EwMzdiMGU5MDE4MmIzNGMwNTc5YTY1Y2ZlOGU3YWQ3MWY0MzRiYTQ0ZDBiN2U5NTcwZTRmZjBmYTNjNmE2ODRkZWNkN2ZlZjM0N2U3NmY2MDcyODlkZTViMGQ3OTRjYTNiMDc5OGUzOTY4Yzg2ZDA1M2RhM2FlZDNkMTIzNWI=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "entitySuffix": "",
+        "dtoSuffix": "DTO",
+        "otherModules": [],
+        "enableTranslation": false
+    }
+}

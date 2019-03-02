@@ -1,0 +1,26 @@
+{
+    "name": "Agriculteur",
+    "fields": [
+        {
+            "fieldName": "localistion",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "imageSend",
+            "otherEntityName": "image",
+            "otherEntityRelationshipName": "agriculteur"
+        }
+    ],
+    "changelogDate": "20190216191712",
+    "entityTableName": "agriculteur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

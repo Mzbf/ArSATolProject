@@ -1,0 +1,72 @@
+{
+    "name": "Insecte",
+    "fields": [
+        {
+            "fieldName": "nomInsecte",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomScienInsecte",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cycleBio",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "flag",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "dateValidation",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateAjout",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "methode",
+            "otherEntityName": "methodeLutte",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "insecte"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attaque",
+            "otherEntityName": "attaque",
+            "otherEntityRelationshipName": "insecte"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "imageInsecte",
+            "otherEntityName": "image",
+            "otherEntityRelationshipName": "insecte"
+        },
+        {
+            "relationshipName": "chercheur",
+            "otherEntityName": "chercheur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "administrateur",
+            "otherEntityName": "administrateur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190216191704",
+    "entityTableName": "insecte",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,23 @@
+{
+    "name": "MethodeLutte",
+    "fields": [
+        {
+            "fieldName": "methodeCulturale",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "traitement",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190216191706",
+    "entityTableName": "methode_lutte",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

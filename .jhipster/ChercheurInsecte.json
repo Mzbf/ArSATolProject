@@ -1,0 +1,27 @@
+{
+    "name": "ChercheurInsecte",
+    "fields": [
+        {
+            "fieldName": "dateDAjout",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateValidation",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "flag",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190216191716",
+    "entityTableName": "chercheur_insecte",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

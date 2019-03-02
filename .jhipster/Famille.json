@@ -1,0 +1,14 @@
+{
+    "name": "Famille",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20190216191718",
+    "entityTableName": "famille",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

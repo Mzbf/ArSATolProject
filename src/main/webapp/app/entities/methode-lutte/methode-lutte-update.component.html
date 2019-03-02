@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-methode-lutte-heading">Create or edit a Methode Lutte</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!methodeLutte.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="methodeLutte.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_methodeCulturale">Methode Culturale</label>
+                    <input type="text" class="form-control" name="methodeCulturale" id="field_methodeCulturale"
+                        [(ngModel)]="methodeLutte.methodeCulturale" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_traitement">Traitement</label>
+                    <input type="text" class="form-control" name="traitement" id="field_traitement"
+                        [(ngModel)]="methodeLutte.traitement" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

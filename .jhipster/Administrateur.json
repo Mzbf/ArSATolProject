@@ -1,0 +1,27 @@
+{
+    "name": "Administrateur",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "adminAjoutInsecte",
+            "otherEntityName": "insecte",
+            "otherEntityRelationshipName": "administrateur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "adminAjoutAttaque",
+            "otherEntityName": "attaque",
+            "otherEntityRelationshipName": "administrateur"
+        }
+    ],
+    "changelogDate": "20190216191714",
+    "entityTableName": "administrateur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

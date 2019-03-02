@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span>Insectes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-insecte" [routerLink]="['/insecte/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Insecte
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="insectes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nom Insecte</span></th>
+            <th><span>Nom Scien Insecte</span></th>
+            <th><span>Cycle Bio</span></th>
+            <th><span>Flag</span></th>
+            <th><span>Date Validation</span></th>
+            <th><span>Date Ajout</span></th>
+            <th><span>Methode</span></th>
+            <th><span>Chercheur</span></th>
+            <th><span>Administrateur</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let insecte of insectes ;trackBy: trackId">
+                <td><a [routerLink]="['/insecte', insecte.id, 'view' ]">{{insecte.id}}</a></td>
+                <td>{{insecte.nomInsecte}}</td>
+                <td>{{insecte.nomScienInsecte}}</td>
+                <td>{{insecte.cycleBio}}</td>
+                <td>{{insecte.flag}}</td>
+                <td>{{insecte.dateValidation | date:'medium'}}</td>
+                <td>{{insecte.dateAjout | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="insecte.methode">
+                        <a [routerLink]="['../methode-lutte', insecte.methode?.id, 'view' ]" >{{insecte.methode?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="insecte.chercheur">
+                        <a [routerLink]="['../chercheur', insecte.chercheur?.id, 'view' ]" >{{insecte.chercheur?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="insecte.administrateur">
+                        <a [routerLink]="['../administrateur', insecte.administrateur?.id, 'view' ]" >{{insecte.administrateur?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/insecte', insecte.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/insecte', insecte.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'insecte', { outlets: { popup: insecte.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

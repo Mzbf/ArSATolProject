@@ -1,0 +1,40 @@
+{
+    "name": "AdminInsecte",
+    "fields": [
+        {
+            "fieldName": "dateDAjout",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateValidation",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "flag",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "insecte",
+            "otherEntityName": "insecte",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "administrateur",
+            "otherEntityName": "administrateur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190216191715",
+    "entityTableName": "admin_insecte",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="insecte">
+            <h2><span>Insecte</span> {{insecte.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom Insecte</span></dt>
+                <dd>
+                    <span>{{insecte.nomInsecte}}</span>
+                </dd>
+                <dt><span>Nom Scien Insecte</span></dt>
+                <dd>
+                    <span>{{insecte.nomScienInsecte}}</span>
+                </dd>
+                <dt><span>Cycle Bio</span></dt>
+                <dd>
+                    <span>{{insecte.cycleBio}}</span>
+                </dd>
+                <dt><span>Flag</span></dt>
+                <dd>
+                    <span>{{insecte.flag}}</span>
+                </dd>
+                <dt><span>Date Validation</span></dt>
+                <dd>
+                    <span>{{insecte.dateValidation}}</span>
+                </dd>
+                <dt><span>Date Ajout</span></dt>
+                <dd>
+                    <span>{{insecte.dateAjout}}</span>
+                </dd>
+                <dt><span>Methode</span></dt>
+                <dd>
+                    <div *ngIf="insecte.methode">
+                        <a [routerLink]="['/methode-lutte', insecte.methode?.id, 'view']">{{insecte.methode?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Chercheur</span></dt>
+                <dd>
+                    <div *ngIf="insecte.chercheur">
+                        <a [routerLink]="['/chercheur', insecte.chercheur?.id, 'view']">{{insecte.chercheur?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Administrateur</span></dt>
+                <dd>
+                    <div *ngIf="insecte.administrateur">
+                        <a [routerLink]="['/administrateur', insecte.administrateur?.id, 'view']">{{insecte.administrateur?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/insecte', insecte.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

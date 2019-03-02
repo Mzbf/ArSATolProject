@@ -1,0 +1,32 @@
+{
+    "name": "Chercheur",
+    "fields": [
+        {
+            "fieldName": "institut",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "ajoutInsecte",
+            "otherEntityName": "insecte",
+            "otherEntityRelationshipName": "chercheur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "ajoutAttaque",
+            "otherEntityName": "attaque",
+            "otherEntityRelationshipName": "chercheur"
+        }
+    ],
+    "changelogDate": "20190216191713",
+    "entityTableName": "chercheur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

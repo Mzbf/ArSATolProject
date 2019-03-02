@@ -1,0 +1,102 @@
+entity Insecte {
+
+	nomInsecte String,
+    nomScienInsecte String,
+    cycleBio String,
+    flag Boolean,
+	dateValidation Instant,
+    dateAjout Instant
+    
+}
+entity Attaque {
+    
+	localisation String,
+    description String,
+    flag Boolean,
+	dateValidation Instant,
+    dateAjout Instant
+}
+entity MethodeLutte{
+	methodeCulturale String
+	traitement String
+}
+
+entity Culture {
+	nomCulture String 
+}
+entity Image {
+
+urlImage String,
+dateDAjout Instant,
+dateValidation Instant,
+flag Boolean
+    
+}
+entity Role{
+	nomRole String
+}
+entity Agriculteur{
+
+	localistion String
+
+}
+entity Chercheur{
+	institut String
+
+}
+entity Administrateur{
+	
+}
+
+entity SuperFamille{
+
+}
+entity Famille{
+
+}
+entity Ordre{
+
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+relationship OneToMany {
+	Insecte{attaque} to Attaque
+}
+relationship OneToMany {
+	Culture{attaque} to Attaque
+}
+
+relationship OneToMany {
+	Chercheur{ajoutInsecte} to Insecte
+}
+relationship OneToMany {
+	Chercheur{ajoutAttaque} to Attaque
+}
+relationship OneToMany{
+	Administrateur{adminAjoutInsecte} to Insecte
+}
+relationship OneToMany {
+	 Administrateur{adminAjoutAttaque} to Attaque
+}
+relationship OneToOne {
+	Insecte{methode} to MethodeLutte
+}
+relationship OneToMany {
+	Attaque{imageAttaque} to Image
+}
+relationship OneToMany {
+	Insecte{imageInsecte} to Image
+}
+relationship OneToMany {
+	Agriculteur{imageSend} to Image
+}
+
+
+
+
+
+
+service all with serviceImpl except User, Administrateur 

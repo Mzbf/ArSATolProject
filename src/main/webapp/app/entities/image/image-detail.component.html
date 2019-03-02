@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="image">
+            <h2><span>Image</span> {{image.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Url Image</span></dt>
+                <dd>
+                    <span>{{image.urlImage}}</span>
+                </dd>
+                <dt><span>Date D Ajout</span></dt>
+                <dd>
+                    <span>{{image.dateDAjout}}</span>
+                </dd>
+                <dt><span>Date Validation</span></dt>
+                <dd>
+                    <span>{{image.dateValidation}}</span>
+                </dd>
+                <dt><span>Flag</span></dt>
+                <dd>
+                    <span>{{image.flag}}</span>
+                </dd>
+                <dt><span>Insecte</span></dt>
+                <dd>
+                    <div *ngIf="image.insecte">
+                        <a [routerLink]="['/insecte', image.insecte?.id, 'view']">{{image.insecte?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Attaque</span></dt>
+                <dd>
+                    <div *ngIf="image.attaque">
+                        <a [routerLink]="['/attaque', image.attaque?.id, 'view']">{{image.attaque?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Agriculteur</span></dt>
+                <dd>
+                    <div *ngIf="image.agriculteur">
+                        <a [routerLink]="['/agriculteur', image.agriculteur?.id, 'view']">{{image.agriculteur?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/image', image.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

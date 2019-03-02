@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191704_added_entity_Insecte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191705_added_entity_Attaque.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191706_added_entity_MethodeLutte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191707_added_entity_Culture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191708_added_entity_Image.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191711_added_entity_Role.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191712_added_entity_Agriculteur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191713_added_entity_Chercheur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191714_added_entity_Administrateur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191717_added_entity_SuperFamille.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191718_added_entity_Famille.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191719_added_entity_Ordre.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190216191704_added_entity_constraints_Insecte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191705_added_entity_constraints_Attaque.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191708_added_entity_constraints_Image.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

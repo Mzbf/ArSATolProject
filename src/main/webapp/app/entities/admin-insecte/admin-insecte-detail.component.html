@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="adminInsecte">
+            <h2><span>Admin Insecte</span> {{adminInsecte.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date D Ajout</span></dt>
+                <dd>
+                    <span>{{adminInsecte.dateDAjout}}</span>
+                </dd>
+                <dt><span>Date Validation</span></dt>
+                <dd>
+                    <span>{{adminInsecte.dateValidation}}</span>
+                </dd>
+                <dt><span>Flag</span></dt>
+                <dd>
+                    <span>{{adminInsecte.flag}}</span>
+                </dd>
+                <dt><span>Insecte</span></dt>
+                <dd>
+                    <div *ngIf="adminInsecte.insecte">
+                        <a [routerLink]="['/insecte', adminInsecte.insecte?.id, 'view']">{{adminInsecte.insecte?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Administrateur</span></dt>
+                <dd>
+                    <div *ngIf="adminInsecte.administrateur">
+                        <a [routerLink]="['/administrateur', adminInsecte.administrateur?.id, 'view']">{{adminInsecte.administrateur?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/admin-insecte', adminInsecte.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

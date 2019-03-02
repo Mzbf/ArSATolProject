@@ -1,0 +1,26 @@
+{
+    "name": "Culture",
+    "fields": [
+        {
+            "fieldName": "nomCulture",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attaque",
+            "otherEntityName": "attaque",
+            "otherEntityRelationshipName": "culture"
+        }
+    ],
+    "changelogDate": "20190216191707",
+    "entityTableName": "culture",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

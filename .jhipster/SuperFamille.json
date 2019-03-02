@@ -1,0 +1,14 @@
+{
+    "name": "SuperFamille",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20190216191717",
+    "entityTableName": "super_famille",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

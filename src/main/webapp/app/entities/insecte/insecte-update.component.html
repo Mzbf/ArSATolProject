@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-insecte-heading">Create or edit a Insecte</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!insecte.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="insecte.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomInsecte">Nom Insecte</label>
+                    <input type="text" class="form-control" name="nomInsecte" id="field_nomInsecte"
+                        [(ngModel)]="insecte.nomInsecte" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomScienInsecte">Nom Scien Insecte</label>
+                    <input type="text" class="form-control" name="nomScienInsecte" id="field_nomScienInsecte"
+                        [(ngModel)]="insecte.nomScienInsecte" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cycleBio">Cycle Bio</label>
+                    <input type="text" class="form-control" name="cycleBio" id="field_cycleBio"
+                        [(ngModel)]="insecte.cycleBio" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_flag">Flag</label>
+                    <input type="checkbox" class="form-control" name="flag" id="field_flag"
+                        [(ngModel)]="insecte.flag" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateValidation">Date Validation</label>
+                    <div class="d-flex">
+                        <input id="field_dateValidation" type="datetime-local" class="form-control" name="dateValidation" [(ngModel)]="dateValidation" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateAjout">Date Ajout</label>
+                    <div class="d-flex">
+                        <input id="field_dateAjout" type="datetime-local" class="form-control" name="dateAjout" [(ngModel)]="dateAjout" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_methode">Methode</label>
+                    <select class="form-control" id="field_methode" name="methode" [(ngModel)]="insecte.methode">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="methodeLutteOption.id === insecte.methode?.id ? insecte.methode : methodeLutteOption" *ngFor="let methodeLutteOption of methodes; trackBy: trackMethodeLutteById">{{methodeLutteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_chercheur">Chercheur</label>
+                    <select class="form-control" id="field_chercheur" name="chercheur" [(ngModel)]="insecte.chercheur" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="chercheurOption.id === insecte.chercheur?.id ? insecte.chercheur : chercheurOption" *ngFor="let chercheurOption of chercheurs; trackBy: trackChercheurById">{{chercheurOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_administrateur">Administrateur</label>
+                    <select class="form-control" id="field_administrateur" name="administrateur" [(ngModel)]="insecte.administrateur" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="administrateurOption.id === insecte.administrateur?.id ? insecte.administrateur : administrateurOption" *ngFor="let administrateurOption of administrateurs; trackBy: trackAdministrateurById">{{administrateurOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

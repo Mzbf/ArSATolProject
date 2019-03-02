@@ -1,0 +1,14 @@
+{
+    "name": "Ordre",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20190216191719",
+    "entityTableName": "ordre",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
