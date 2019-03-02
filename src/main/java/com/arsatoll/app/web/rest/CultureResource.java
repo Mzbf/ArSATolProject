@@ -39,7 +39,7 @@ public class CultureResource {
      * @return the ResponseEntity with status 201 (Created) and with body the new culture, or with status 400 (Bad Request) if the culture has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("/cultures")
+    @PostMapping("ajout/cultures")
     public ResponseEntity<Culture> createCulture(@RequestBody Culture culture) throws URISyntaxException {
         log.debug("REST request to save Culture : {}", culture);
         if (culture.getId() != null) {
@@ -60,7 +60,7 @@ public class CultureResource {
      * or with status 500 (Internal Server Error) if the culture couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PutMapping("/cultures")
+    @PutMapping("modifie/cultures")
     public ResponseEntity<Culture> updateCulture(@RequestBody Culture culture) throws URISyntaxException {
         log.debug("REST request to update Culture : {}", culture);
         if (culture.getId() == null) {
@@ -102,7 +102,7 @@ public class CultureResource {
      * @param id the id of the culture to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/cultures/{id}")
+    @DeleteMapping("delete/cultures/{id}")
     public ResponseEntity<Void> deleteCulture(@PathVariable Long id) {
         log.debug("REST request to delete Culture : {}", id);
         cultureService.delete(id);
