@@ -137,6 +137,24 @@ public class CultureResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNomCultureIsRequired() throws Exception {
+        int databaseSizeBeforeTest = cultureRepository.findAll().size();
+        // set the field null
+        culture.setNomCulture(null);
+
+        // Create the Culture, which fails.
+
+        restCultureMockMvc.perform(post("/api/cultures")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(culture)))
+            .andExpect(status().isBadRequest());
+
+        List<Culture> cultureList = cultureRepository.findAll();
+        assertThat(cultureList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllCultures() throws Exception {
         // Initialize the database
         cultureRepository.saveAndFlush(culture);

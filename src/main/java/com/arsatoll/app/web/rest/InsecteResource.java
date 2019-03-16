@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -40,7 +41,7 @@ public class InsecteResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/insectes")
-    public ResponseEntity<Insecte> createInsecte(@RequestBody Insecte insecte) throws URISyntaxException {
+    public ResponseEntity<Insecte> createInsecte(@Valid @RequestBody Insecte insecte) throws URISyntaxException {
         log.debug("REST request to save Insecte : {}", insecte);
         if (insecte.getId() != null) {
             throw new BadRequestAlertException("A new insecte cannot already have an ID", ENTITY_NAME, "idexists");
@@ -61,7 +62,7 @@ public class InsecteResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/insectes")
-    public ResponseEntity<Insecte> updateInsecte(@RequestBody Insecte insecte) throws URISyntaxException {
+    public ResponseEntity<Insecte> updateInsecte(@Valid @RequestBody Insecte insecte) throws URISyntaxException {
         log.debug("REST request to update Insecte : {}", insecte);
         if (insecte.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

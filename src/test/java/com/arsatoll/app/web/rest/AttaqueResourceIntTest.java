@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
@@ -34,6 +35,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.arsatoll.app.domain.enumeration.Localisation;
+import com.arsatoll.app.domain.enumeration.TypeDegat;
 /**
  * Test class for the AttaqueResource REST controller.
  *
@@ -43,14 +46,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ArsatollserviceApp.class)
 public class AttaqueResourceIntTest {
 
-    private static final String DEFAULT_LOCALISATION = "AAAAAAAAAA";
-    private static final String UPDATED_LOCALISATION = "BBBBBBBBBB";
+    private static final Localisation DEFAULT_LOCALISATION = Localisation.FEUILLES;
+    private static final Localisation UPDATED_LOCALISATION = Localisation.FRUITS;
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     private static final Boolean DEFAULT_FLAG = false;
     private static final Boolean UPDATED_FLAG = true;
+
+    private static final TypeDegat DEFAULT_TYPE_DEGAT = TypeDegat.TACHE;
+    private static final TypeDegat UPDATED_TYPE_DEGAT = TypeDegat.GALERIE;
 
     private static final Instant DEFAULT_DATE_VALIDATION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATE_VALIDATION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -106,6 +112,7 @@ public class AttaqueResourceIntTest {
             .localisation(DEFAULT_LOCALISATION)
             .description(DEFAULT_DESCRIPTION)
             .flag(DEFAULT_FLAG)
+            .typeDegat(DEFAULT_TYPE_DEGAT)
             .dateValidation(DEFAULT_DATE_VALIDATION)
             .dateAjout(DEFAULT_DATE_AJOUT);
         return attaque;
@@ -134,6 +141,7 @@ public class AttaqueResourceIntTest {
         assertThat(testAttaque.getLocalisation()).isEqualTo(DEFAULT_LOCALISATION);
         assertThat(testAttaque.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testAttaque.isFlag()).isEqualTo(DEFAULT_FLAG);
+        assertThat(testAttaque.getTypeDegat()).isEqualTo(DEFAULT_TYPE_DEGAT);
         assertThat(testAttaque.getDateValidation()).isEqualTo(DEFAULT_DATE_VALIDATION);
         assertThat(testAttaque.getDateAjout()).isEqualTo(DEFAULT_DATE_AJOUT);
     }
@@ -159,6 +167,42 @@ public class AttaqueResourceIntTest {
 
     @Test
     @Transactional
+    public void checkLocalisationIsRequired() throws Exception {
+        int databaseSizeBeforeTest = attaqueRepository.findAll().size();
+        // set the field null
+        attaque.setLocalisation(null);
+
+        // Create the Attaque, which fails.
+
+        restAttaqueMockMvc.perform(post("/api/attaques")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(attaque)))
+            .andExpect(status().isBadRequest());
+
+        List<Attaque> attaqueList = attaqueRepository.findAll();
+        assertThat(attaqueList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkTypeDegatIsRequired() throws Exception {
+        int databaseSizeBeforeTest = attaqueRepository.findAll().size();
+        // set the field null
+        attaque.setTypeDegat(null);
+
+        // Create the Attaque, which fails.
+
+        restAttaqueMockMvc.perform(post("/api/attaques")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(attaque)))
+            .andExpect(status().isBadRequest());
+
+        List<Attaque> attaqueList = attaqueRepository.findAll();
+        assertThat(attaqueList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllAttaques() throws Exception {
         // Initialize the database
         attaqueRepository.saveAndFlush(attaque);
@@ -171,6 +215,7 @@ public class AttaqueResourceIntTest {
             .andExpect(jsonPath("$.[*].localisation").value(hasItem(DEFAULT_LOCALISATION.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].flag").value(hasItem(DEFAULT_FLAG.booleanValue())))
+            .andExpect(jsonPath("$.[*].typeDegat").value(hasItem(DEFAULT_TYPE_DEGAT.toString())))
             .andExpect(jsonPath("$.[*].dateValidation").value(hasItem(DEFAULT_DATE_VALIDATION.toString())))
             .andExpect(jsonPath("$.[*].dateAjout").value(hasItem(DEFAULT_DATE_AJOUT.toString())));
     }
@@ -189,6 +234,7 @@ public class AttaqueResourceIntTest {
             .andExpect(jsonPath("$.localisation").value(DEFAULT_LOCALISATION.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.flag").value(DEFAULT_FLAG.booleanValue()))
+            .andExpect(jsonPath("$.typeDegat").value(DEFAULT_TYPE_DEGAT.toString()))
             .andExpect(jsonPath("$.dateValidation").value(DEFAULT_DATE_VALIDATION.toString()))
             .andExpect(jsonPath("$.dateAjout").value(DEFAULT_DATE_AJOUT.toString()));
     }
@@ -217,6 +263,7 @@ public class AttaqueResourceIntTest {
             .localisation(UPDATED_LOCALISATION)
             .description(UPDATED_DESCRIPTION)
             .flag(UPDATED_FLAG)
+            .typeDegat(UPDATED_TYPE_DEGAT)
             .dateValidation(UPDATED_DATE_VALIDATION)
             .dateAjout(UPDATED_DATE_AJOUT);
 
@@ -232,6 +279,7 @@ public class AttaqueResourceIntTest {
         assertThat(testAttaque.getLocalisation()).isEqualTo(UPDATED_LOCALISATION);
         assertThat(testAttaque.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testAttaque.isFlag()).isEqualTo(UPDATED_FLAG);
+        assertThat(testAttaque.getTypeDegat()).isEqualTo(UPDATED_TYPE_DEGAT);
         assertThat(testAttaque.getDateValidation()).isEqualTo(UPDATED_DATE_VALIDATION);
         assertThat(testAttaque.getDateAjout()).isEqualTo(UPDATED_DATE_AJOUT);
     }

@@ -12,7 +12,13 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_nomCulture">Nom Culture</label>
                     <input type="text" class="form-control" name="nomCulture" id="field_nomCulture"
-                        [(ngModel)]="culture.nomCulture" />
+                        [(ngModel)]="culture.nomCulture" required/>
+                    <div [hidden]="!(editForm.controls.nomCulture?.dirty && editForm.controls.nomCulture?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomCulture?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
             </div>

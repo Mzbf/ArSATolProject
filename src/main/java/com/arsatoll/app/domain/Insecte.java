@@ -7,6 +7,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -28,17 +29,39 @@ public class Insecte implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nom_insecte")
+    @NotNull
+    @Column(name = "nom_insecte", nullable = false)
     private String nomInsecte;
 
-    @Column(name = "nom_scien_insecte")
+    @NotNull
+    @Column(name = "nom_scien_insecte", nullable = false)
     private String nomScienInsecte;
 
+    @Lob
+    @Column(name = "insecte_image")
+    private byte[] insecteImage;
+
+    @Column(name = "insecte_image_content_type")
+    private String insecteImageContentType;
+
+    @Lob
+    @Column(name = "description")
+    private String description;
+
+    @Lob
     @Column(name = "cycle_bio")
     private String cycleBio;
 
-    @Column(name = "flag")
-    private Boolean flag;
+    @Lob
+    @Column(name = "autre_plante")
+    private String autrePlante;
+
+    @Lob
+    @Column(name = "image_cycle")
+    private byte[] imageCycle;
+
+    @Column(name = "image_cycle_content_type")
+    private String imageCycleContentType;
 
     @Column(name = "date_validation")
     private Instant dateValidation;
@@ -55,7 +78,7 @@ public class Insecte implements Serializable {
     private Set<Attaque> attaques = new HashSet<>();
     @OneToMany(mappedBy = "insecte")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Image> imageInsectes = new HashSet<>();
+    private Set<ImageAttaque> imageInsectes = new HashSet<>();
     @ManyToOne
     @JsonIgnoreProperties("ajoutInsectes")
     private Chercheur chercheur;
@@ -99,6 +122,45 @@ public class Insecte implements Serializable {
         this.nomScienInsecte = nomScienInsecte;
     }
 
+    public byte[] getInsecteImage() {
+        return insecteImage;
+    }
+
+    public Insecte insecteImage(byte[] insecteImage) {
+        this.insecteImage = insecteImage;
+        return this;
+    }
+
+    public void setInsecteImage(byte[] insecteImage) {
+        this.insecteImage = insecteImage;
+    }
+
+    public String getInsecteImageContentType() {
+        return insecteImageContentType;
+    }
+
+    public Insecte insecteImageContentType(String insecteImageContentType) {
+        this.insecteImageContentType = insecteImageContentType;
+        return this;
+    }
+
+    public void setInsecteImageContentType(String insecteImageContentType) {
+        this.insecteImageContentType = insecteImageContentType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Insecte description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getCycleBio() {
         return cycleBio;
     }
@@ -112,17 +174,43 @@ public class Insecte implements Serializable {
         this.cycleBio = cycleBio;
     }
 
-    public Boolean isFlag() {
-        return flag;
+    public String getAutrePlante() {
+        return autrePlante;
     }
 
-    public Insecte flag(Boolean flag) {
-        this.flag = flag;
+    public Insecte autrePlante(String autrePlante) {
+        this.autrePlante = autrePlante;
         return this;
     }
 
-    public void setFlag(Boolean flag) {
-        this.flag = flag;
+    public void setAutrePlante(String autrePlante) {
+        this.autrePlante = autrePlante;
+    }
+
+    public byte[] getImageCycle() {
+        return imageCycle;
+    }
+
+    public Insecte imageCycle(byte[] imageCycle) {
+        this.imageCycle = imageCycle;
+        return this;
+    }
+
+    public void setImageCycle(byte[] imageCycle) {
+        this.imageCycle = imageCycle;
+    }
+
+    public String getImageCycleContentType() {
+        return imageCycleContentType;
+    }
+
+    public Insecte imageCycleContentType(String imageCycleContentType) {
+        this.imageCycleContentType = imageCycleContentType;
+        return this;
+    }
+
+    public void setImageCycleContentType(String imageCycleContentType) {
+        this.imageCycleContentType = imageCycleContentType;
     }
 
     public Instant getDateValidation() {
@@ -189,29 +277,29 @@ public class Insecte implements Serializable {
         this.attaques = attaques;
     }
 
-    public Set<Image> getImageInsectes() {
+    public Set<ImageAttaque> getImageInsectes() {
         return imageInsectes;
     }
 
-    public Insecte imageInsectes(Set<Image> images) {
-        this.imageInsectes = images;
+    public Insecte imageInsectes(Set<ImageAttaque> imageAttaques) {
+        this.imageInsectes = imageAttaques;
         return this;
     }
 
-    public Insecte addImageInsecte(Image image) {
-        this.imageInsectes.add(image);
-        image.setInsecte(this);
+    public Insecte addImageInsecte(ImageAttaque imageAttaque) {
+        this.imageInsectes.add(imageAttaque);
+        imageAttaque.setInsecte(this);
         return this;
     }
 
-    public Insecte removeImageInsecte(Image image) {
-        this.imageInsectes.remove(image);
-        image.setInsecte(null);
+    public Insecte removeImageInsecte(ImageAttaque imageAttaque) {
+        this.imageInsectes.remove(imageAttaque);
+        imageAttaque.setInsecte(null);
         return this;
     }
 
-    public void setImageInsectes(Set<Image> images) {
-        this.imageInsectes = images;
+    public void setImageInsectes(Set<ImageAttaque> imageAttaques) {
+        this.imageInsectes = imageAttaques;
     }
 
     public Chercheur getChercheur() {
@@ -267,8 +355,13 @@ public class Insecte implements Serializable {
             "id=" + getId() +
             ", nomInsecte='" + getNomInsecte() + "'" +
             ", nomScienInsecte='" + getNomScienInsecte() + "'" +
+            ", insecteImage='" + getInsecteImage() + "'" +
+            ", insecteImageContentType='" + getInsecteImageContentType() + "'" +
+            ", description='" + getDescription() + "'" +
             ", cycleBio='" + getCycleBio() + "'" +
-            ", flag='" + isFlag() + "'" +
+            ", autrePlante='" + getAutrePlante() + "'" +
+            ", imageCycle='" + getImageCycle() + "'" +
+            ", imageCycleContentType='" + getImageCycleContentType() + "'" +
             ", dateValidation='" + getDateValidation() + "'" +
             ", dateAjout='" + getDateAjout() + "'" +
             "}";

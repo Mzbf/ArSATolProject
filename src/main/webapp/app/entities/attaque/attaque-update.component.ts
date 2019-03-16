@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-import { JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { IAttaque } from 'app/shared/model/attaque.model';
 import { AttaqueService } from './attaque.service';
 import { IInsecte } from 'app/shared/model/insecte.model';
@@ -36,6 +36,7 @@ export class AttaqueUpdateComponent implements OnInit {
     dateAjout: string;
 
     constructor(
+        protected dataUtils: JhiDataUtils,
         protected jhiAlertService: JhiAlertService,
         protected attaqueService: AttaqueService,
         protected insecteService: InsecteService,
@@ -80,6 +81,18 @@ export class AttaqueUpdateComponent implements OnInit {
                 map((response: HttpResponse<IAdministrateur[]>) => response.body)
             )
             .subscribe((res: IAdministrateur[]) => (this.administrateurs = res), (res: HttpErrorResponse) => this.onError(res.message));
+    }
+
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, entity, field, isImage) {
+        this.dataUtils.setFileData(event, entity, field, isImage);
     }
 
     previousState() {

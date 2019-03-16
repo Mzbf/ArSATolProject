@@ -28,6 +28,13 @@ public class Image implements Serializable {
     @Column(name = "url_image")
     private String urlImage;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    @Column(name = "image_content_type")
+    private String imageContentType;
+
     @Column(name = "date_d_ajout")
     private Instant dateDAjout;
 
@@ -69,6 +76,32 @@ public class Image implements Serializable {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public Image image(byte[] image) {
+        this.image = image;
+        return this;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public Image imageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+        return this;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
     }
 
     public Instant getDateDAjout() {
@@ -175,6 +208,8 @@ public class Image implements Serializable {
         return "Image{" +
             "id=" + getId() +
             ", urlImage='" + getUrlImage() + "'" +
+            ", image='" + getImage() + "'" +
+            ", imageContentType='" + getImageContentType() + "'" +
             ", dateDAjout='" + getDateDAjout() + "'" +
             ", dateValidation='" + getDateValidation() + "'" +
             ", flag='" + isFlag() + "'" +

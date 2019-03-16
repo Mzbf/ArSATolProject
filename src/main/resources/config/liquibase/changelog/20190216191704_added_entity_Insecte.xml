@@ -23,18 +23,36 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="nom_insecte" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="nom_scien_insecte" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="insecte_image" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="insecte_image_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="cycle_bio" type="varchar(255)">
+            <column name="description" type="clob">
                 <constraints nullable="true" />
             </column>
 
-            <column name="flag" type="boolean">
+            <column name="cycle_bio" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="autre_plante" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="image_cycle" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="image_cycle_content_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -39,8 +40,8 @@ public class CultureResource {
      * @return the ResponseEntity with status 201 (Created) and with body the new culture, or with status 400 (Bad Request) if the culture has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("ajout/cultures")
-    public ResponseEntity<Culture> createCulture(@RequestBody Culture culture) throws URISyntaxException {
+    @PostMapping("/cultures")
+    public ResponseEntity<Culture> createCulture(@Valid @RequestBody Culture culture) throws URISyntaxException {
         log.debug("REST request to save Culture : {}", culture);
         if (culture.getId() != null) {
             throw new BadRequestAlertException("A new culture cannot already have an ID", ENTITY_NAME, "idexists");
@@ -60,8 +61,8 @@ public class CultureResource {
      * or with status 500 (Internal Server Error) if the culture couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PutMapping("modifie/cultures")
-    public ResponseEntity<Culture> updateCulture(@RequestBody Culture culture) throws URISyntaxException {
+    @PutMapping("/cultures")
+    public ResponseEntity<Culture> updateCulture(@Valid @RequestBody Culture culture) throws URISyntaxException {
         log.debug("REST request to update Culture : {}", culture);
         if (culture.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -102,7 +103,7 @@ public class CultureResource {
      * @param id the id of the culture to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("delete/cultures/{id}")
+    @DeleteMapping("/cultures/{id}")
     public ResponseEntity<Void> deleteCulture(@PathVariable Long id) {
         log.debug("REST request to delete Culture : {}", id);
         cultureService.delete(id);

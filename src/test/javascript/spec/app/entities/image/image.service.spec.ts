@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new Image(0, 'AAAAAAA', currentDate, currentDate, false);
+            elemDefault = new Image(0, 'AAAAAAA', 'image/png', 'AAAAAAA', currentDate, currentDate, false);
         });
 
         describe('Service methods', async () => {
@@ -74,6 +74,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         urlImage: 'BBBBBB',
+                        image: 'BBBBBB',
                         dateDAjout: currentDate.format(DATE_TIME_FORMAT),
                         dateValidation: currentDate.format(DATE_TIME_FORMAT),
                         flag: true
@@ -100,6 +101,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         urlImage: 'BBBBBB',
+                        image: 'BBBBBB',
                         dateDAjout: currentDate.format(DATE_TIME_FORMAT),
                         dateValidation: currentDate.format(DATE_TIME_FORMAT),
                         flag: true

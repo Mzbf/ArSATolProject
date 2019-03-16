@@ -13,13 +13,31 @@
                 <dd>
                     <span>{{insecte.nomScienInsecte}}</span>
                 </dd>
+                <dt><span>Insecte Image</span></dt>
+                <dd>
+                    <div *ngIf="insecte.insecteImage">
+                        <a (click)="openFile(insecte.insecteImageContentType, insecte.insecteImage)">open</a>
+                        {{insecte.insecteImageContentType}}, {{byteSize(insecte.insecteImage)}}
+                    </div>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{insecte.description}}</span>
+                </dd>
                 <dt><span>Cycle Bio</span></dt>
                 <dd>
                     <span>{{insecte.cycleBio}}</span>
                 </dd>
-                <dt><span>Flag</span></dt>
+                <dt><span>Autre Plante</span></dt>
                 <dd>
-                    <span>{{insecte.flag}}</span>
+                    <span>{{insecte.autrePlante}}</span>
+                </dd>
+                <dt><span>Image Cycle</span></dt>
+                <dd>
+                    <div *ngIf="insecte.imageCycle">
+                        <a (click)="openFile(insecte.imageCycleContentType, insecte.imageCycle)">open</a>
+                        {{insecte.imageCycleContentType}}, {{byteSize(insecte.imageCycle)}}
+                    </div>
                 </dd>
                 <dt><span>Date Validation</span></dt>
                 <dd>

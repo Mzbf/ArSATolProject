@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -26,7 +27,8 @@ public class Culture implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nom_culture")
+    @NotNull
+    @Column(name = "nom_culture", nullable = false)
     private String nomCulture;
 
     @OneToMany(mappedBy = "culture")

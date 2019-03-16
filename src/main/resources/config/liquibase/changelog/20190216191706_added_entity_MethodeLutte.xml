@@ -22,11 +22,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="methode_culturale" type="varchar(255)">
+            <column name="methode_culturale" type="clob">
                 <constraints nullable="true" />
             </column>
 
-            <column name="traitement" type="varchar(255)">
+            <column name="traitement" type="clob">
                 <constraints nullable="true" />
             </column>
 

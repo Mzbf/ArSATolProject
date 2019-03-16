@@ -23,15 +23,19 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="localisation" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
-            <column name="description" type="varchar(255)">
+            <column name="description" type="clob">
                 <constraints nullable="true" />
             </column>
 
             <column name="flag" type="boolean">
                 <constraints nullable="true" />
+            </column>
+
+            <column name="type_degat" type="varchar(255)">
+                <constraints nullable="false" />
             </column>
 
             <column name="date_validation" type="datetime">
@@ -55,9 +59,6 @@
             </column>
 
             <column name="administrateur_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="typeDegat" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

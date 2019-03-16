@@ -23,9 +23,11 @@ public class MethodeLutte implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Lob
     @Column(name = "methode_culturale")
     private String methodeCulturale;
 
+    @Lob
     @Column(name = "traitement")
     private String traitement;
 

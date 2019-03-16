@@ -7,12 +7,17 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+
+import com.arsatoll.app.domain.enumeration.Localisation;
+
+import com.arsatoll.app.domain.enumeration.TypeDegat;
 
 /**
  * A Attaque.
@@ -28,14 +33,22 @@ public class Attaque implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "localisation")
-    private String localisation;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "localisation", nullable = false)
+    private Localisation localisation;
 
+    @Lob
     @Column(name = "description")
     private String description;
 
     @Column(name = "flag")
     private Boolean flag;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type_degat", nullable = false)
+    private TypeDegat typeDegat;
 
     @Column(name = "date_validation")
     private Instant dateValidation;
@@ -43,16 +56,13 @@ public class Attaque implements Serializable {
     @Column(name = "date_ajout")
     private Instant dateAjout;
 
-    @Column(name = "typeDegat")
-    private TypeDegat typeDegat;
-
     @ManyToOne
     @JsonIgnoreProperties("attaques")
     private Insecte insecte;
 
     @OneToMany(mappedBy = "attaque")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Image> imageAttaques = new HashSet<>();
+    private Set<ImageAttaque> imageAttaques = new HashSet<>();
     @ManyToOne
     @JsonIgnoreProperties("attaques")
     private Culture culture;
@@ -65,7 +75,6 @@ public class Attaque implements Serializable {
     @JsonIgnoreProperties("adminAjoutAttaques")
     private Administrateur administrateur;
 
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -75,16 +84,16 @@ public class Attaque implements Serializable {
         this.id = id;
     }
 
-    public String getLocalisation() {
+    public Localisation getLocalisation() {
         return localisation;
     }
 
-    public Attaque localisation(String localisation) {
+    public Attaque localisation(Localisation localisation) {
         this.localisation = localisation;
         return this;
     }
 
-    public void setLocalisation(String localisation) {
+    public void setLocalisation(Localisation localisation) {
         this.localisation = localisation;
     }
 
@@ -112,6 +121,19 @@ public class Attaque implements Serializable {
 
     public void setFlag(Boolean flag) {
         this.flag = flag;
+    }
+
+    public TypeDegat getTypeDegat() {
+        return typeDegat;
+    }
+
+    public Attaque typeDegat(TypeDegat typeDegat) {
+        this.typeDegat = typeDegat;
+        return this;
+    }
+
+    public void setTypeDegat(TypeDegat typeDegat) {
+        this.typeDegat = typeDegat;
     }
 
     public Instant getDateValidation() {
@@ -153,29 +175,29 @@ public class Attaque implements Serializable {
         this.insecte = insecte;
     }
 
-    public Set<Image> getImageAttaques() {
+    public Set<ImageAttaque> getImageAttaques() {
         return imageAttaques;
     }
 
-    public Attaque imageAttaques(Set<Image> images) {
-        this.imageAttaques = images;
+    public Attaque imageAttaques(Set<ImageAttaque> imageAttaques) {
+        this.imageAttaques = imageAttaques;
         return this;
     }
 
-    public Attaque addImageAttaque(Image image) {
-        this.imageAttaques.add(image);
-        image.setAttaque(this);
+    public Attaque addImageAttaque(ImageAttaque imageAttaque) {
+        this.imageAttaques.add(imageAttaque);
+        imageAttaque.setAttaque(this);
         return this;
     }
 
-    public Attaque removeImageAttaque(Image image) {
-        this.imageAttaques.remove(image);
-        image.setAttaque(null);
+    public Attaque removeImageAttaque(ImageAttaque imageAttaque) {
+        this.imageAttaques.remove(imageAttaque);
+        imageAttaque.setAttaque(null);
         return this;
     }
 
-    public void setImageAttaques(Set<Image> images) {
-        this.imageAttaques = images;
+    public void setImageAttaques(Set<ImageAttaque> imageAttaques) {
+        this.imageAttaques = imageAttaques;
     }
 
     public Culture getCulture() {
@@ -213,15 +235,6 @@ public class Attaque implements Serializable {
         return this;
     }
 
-
-    public TypeDegat getTypeDegat() {
-        return typeDegat;
-    }
-
-    public void setTypeDegat(TypeDegat typeDegat) {
-        this.typeDegat = typeDegat;
-    }
-
     public void setAdministrateur(Administrateur administrateur) {
         this.administrateur = administrateur;
     }
@@ -247,7 +260,6 @@ public class Attaque implements Serializable {
         return Objects.hashCode(getId());
     }
 
-
     @Override
     public String toString() {
         return "Attaque{" +
@@ -255,6 +267,7 @@ public class Attaque implements Serializable {
             ", localisation='" + getLocalisation() + "'" +
             ", description='" + getDescription() + "'" +
             ", flag='" + isFlag() + "'" +
+            ", typeDegat='" + getTypeDegat() + "'" +
             ", dateValidation='" + getDateValidation() + "'" +
             ", dateAjout='" + getDateAjout() + "'" +
             "}";

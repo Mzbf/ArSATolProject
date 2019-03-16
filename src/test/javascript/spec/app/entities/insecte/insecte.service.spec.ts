@@ -25,7 +25,20 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new Insecte(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false, currentDate, currentDate);
+            elemDefault = new Insecte(
+                0,
+                'AAAAAAA',
+                'AAAAAAA',
+                'image/png',
+                'AAAAAAA',
+                'AAAAAAA',
+                'AAAAAAA',
+                'AAAAAAA',
+                'image/png',
+                'AAAAAAA',
+                currentDate,
+                currentDate
+            );
         });
 
         describe('Service methods', async () => {
@@ -75,8 +88,11 @@ describe('Service Tests', () => {
                     {
                         nomInsecte: 'BBBBBB',
                         nomScienInsecte: 'BBBBBB',
+                        insecteImage: 'BBBBBB',
+                        description: 'BBBBBB',
                         cycleBio: 'BBBBBB',
-                        flag: true,
+                        autrePlante: 'BBBBBB',
+                        imageCycle: 'BBBBBB',
                         dateValidation: currentDate.format(DATE_TIME_FORMAT),
                         dateAjout: currentDate.format(DATE_TIME_FORMAT)
                     },
@@ -103,8 +119,11 @@ describe('Service Tests', () => {
                     {
                         nomInsecte: 'BBBBBB',
                         nomScienInsecte: 'BBBBBB',
+                        insecteImage: 'BBBBBB',
+                        description: 'BBBBBB',
                         cycleBio: 'BBBBBB',
-                        flag: true,
+                        autrePlante: 'BBBBBB',
+                        imageCycle: 'BBBBBB',
                         dateValidation: currentDate.format(DATE_TIME_FORMAT),
                         dateAjout: currentDate.format(DATE_TIME_FORMAT)
                     },

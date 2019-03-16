@@ -17,8 +17,11 @@
             <th><span>ID</span></th>
             <th><span>Nom Insecte</span></th>
             <th><span>Nom Scien Insecte</span></th>
+            <th><span>Insecte Image</span></th>
+            <th><span>Description</span></th>
             <th><span>Cycle Bio</span></th>
-            <th><span>Flag</span></th>
+            <th><span>Autre Plante</span></th>
+            <th><span>Image Cycle</span></th>
             <th><span>Date Validation</span></th>
             <th><span>Date Ajout</span></th>
             <th><span>Methode</span></th>
@@ -32,8 +35,17 @@
                 <td><a [routerLink]="['/insecte', insecte.id, 'view' ]">{{insecte.id}}</a></td>
                 <td>{{insecte.nomInsecte}}</td>
                 <td>{{insecte.nomScienInsecte}}</td>
+                <td>
+                    <a *ngIf="insecte.insecteImage" (click)="openFile(insecte.insecteImageContentType, insecte.insecteImage)">open</a>
+                    <span *ngIf="insecte.insecteImage">{{insecte.insecteImageContentType}}, {{byteSize(insecte.insecteImage)}}</span>
+                </td>
+                <td>{{insecte.description}}</td>
                 <td>{{insecte.cycleBio}}</td>
-                <td>{{insecte.flag}}</td>
+                <td>{{insecte.autrePlante}}</td>
+                <td>
+                    <a *ngIf="insecte.imageCycle" (click)="openFile(insecte.imageCycleContentType, insecte.imageCycle)">open</a>
+                    <span *ngIf="insecte.imageCycle">{{insecte.imageCycleContentType}}, {{byteSize(insecte.imageCycle)}}</span>
+                </td>
                 <td>{{insecte.dateValidation | date:'medium'}}</td>
                 <td>{{insecte.dateAjout | date:'medium'}}</td>
                 <td>

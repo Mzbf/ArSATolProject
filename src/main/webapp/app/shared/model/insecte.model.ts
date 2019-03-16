@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 import { IMethodeLutte } from 'app/shared/model/methode-lutte.model';
 import { IAttaque } from 'app/shared/model/attaque.model';
-import { IImage } from 'app/shared/model/image.model';
+import { IImageAttaque } from 'app/shared/model/image-attaque.model';
 import { IChercheur } from 'app/shared/model/chercheur.model';
 import { IAdministrateur } from 'app/shared/model/administrateur.model';
 
@@ -9,13 +9,18 @@ export interface IInsecte {
     id?: number;
     nomInsecte?: string;
     nomScienInsecte?: string;
-    cycleBio?: string;
-    flag?: boolean;
+    insecteImageContentType?: string;
+    insecteImage?: any;
+    description?: any;
+    cycleBio?: any;
+    autrePlante?: any;
+    imageCycleContentType?: string;
+    imageCycle?: any;
     dateValidation?: Moment;
     dateAjout?: Moment;
     methode?: IMethodeLutte;
     attaques?: IAttaque[];
-    imageInsectes?: IImage[];
+    imageInsectes?: IImageAttaque[];
     chercheur?: IChercheur;
     administrateur?: IAdministrateur;
 }
@@ -25,16 +30,19 @@ export class Insecte implements IInsecte {
         public id?: number,
         public nomInsecte?: string,
         public nomScienInsecte?: string,
-        public cycleBio?: string,
-        public flag?: boolean,
+        public insecteImageContentType?: string,
+        public insecteImage?: any,
+        public description?: any,
+        public cycleBio?: any,
+        public autrePlante?: any,
+        public imageCycleContentType?: string,
+        public imageCycle?: any,
         public dateValidation?: Moment,
         public dateAjout?: Moment,
         public methode?: IMethodeLutte,
         public attaques?: IAttaque[],
-        public imageInsectes?: IImage[],
+        public imageInsectes?: IImageAttaque[],
         public chercheur?: IChercheur,
         public administrateur?: IAdministrateur
-    ) {
-        this.flag = this.flag || false;
-    }
+    ) {}
 }

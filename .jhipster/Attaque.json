@@ -3,15 +3,28 @@
     "fields": [
         {
             "fieldName": "localisation",
-            "fieldType": "String"
+            "fieldType": "Localisation",
+            "fieldValues": "FEUILLES,FRUITS,FLEURES,TIGE",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "description",
-            "fieldType": "String"
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         },
         {
             "fieldName": "flag",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "typeDegat",
+            "fieldType": "TypeDegat",
+            "fieldValues": "TACHE,GALERIE,DEFORMATION,NECROSE",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "dateValidation",
@@ -32,7 +45,7 @@
         {
             "relationshipType": "one-to-many",
             "relationshipName": "imageAttaque",
-            "otherEntityName": "image",
+            "otherEntityName": "imageAttaque",
             "otherEntityRelationshipName": "attaque"
         },
         {

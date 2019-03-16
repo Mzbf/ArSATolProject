@@ -1,11 +1,11 @@
-import { IImage } from 'app/shared/model/image.model';
+import { IImageAttaque } from 'app/shared/model/image-attaque.model';
 
 export interface IAgriculteur {
     id?: number;
     localistion?: string;
-    imageSends?: IImage[];
+    imageSends?: IImageAttaque[];
 }
 
 export class Agriculteur implements IAgriculteur {
-    constructor(public id?: number, public localistion?: string, public imageSends?: IImage[]) {}
+    constructor(public id?: number, public localistion?: string, public imageSends?: IImageAttaque[]) {}
 }

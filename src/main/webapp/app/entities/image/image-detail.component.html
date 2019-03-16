@@ -9,6 +9,13 @@
                 <dd>
                     <span>{{image.urlImage}}</span>
                 </dd>
+                <dt><span>Image</span></dt>
+                <dd>
+                    <div *ngIf="image.image">
+                        <a (click)="openFile(image.imageContentType, image.image)">open</a>
+                        {{image.imageContentType}}, {{byteSize(image.image)}}
+                    </div>
+                </dd>
                 <dt><span>Date D Ajout</span></dt>
                 <dd>
                     <span>{{image.dateDAjout}}</span>

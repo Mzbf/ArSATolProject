@@ -11,18 +11,43 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_localisation">Localisation</label>
-                    <input type="text" class="form-control" name="localisation" id="field_localisation"
-                        [(ngModel)]="attaque.localisation" />
+                    <select class="form-control" name="localisation" [(ngModel)]="attaque.localisation" id="field_localisation"  required>
+                        <option value="FEUILLES">FEUILLES</option>
+                        <option value="FRUITS">FRUITS</option>
+                        <option value="FLEURES">FLEURES</option>
+                        <option value="TIGE">TIGE</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.localisation?.dirty && editForm.controls.localisation?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.localisation?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_description">Description</label>
-                    <input type="text" class="form-control" name="description" id="field_description"
-                        [(ngModel)]="attaque.description" />
+                    <textarea class="form-control" name="description" id="field_description"
+                        [(ngModel)]="attaque.description" ></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_flag">Flag</label>
                     <input type="checkbox" class="form-control" name="flag" id="field_flag"
                         [(ngModel)]="attaque.flag" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeDegat">Type Degat</label>
+                    <select class="form-control" name="typeDegat" [(ngModel)]="attaque.typeDegat" id="field_typeDegat"  required>
+                        <option value="TACHE">TACHE</option>
+                        <option value="GALERIE">GALERIE</option>
+                        <option value="DEFORMATION">DEFORMATION</option>
+                        <option value="NECROSE">NECROSE</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.typeDegat?.dirty && editForm.controls.typeDegat?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.typeDegat?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_dateValidation">Date Validation</label>

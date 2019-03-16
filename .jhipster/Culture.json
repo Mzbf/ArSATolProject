@@ -3,7 +3,10 @@
     "fields": [
         {
             "fieldName": "nomCulture",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [

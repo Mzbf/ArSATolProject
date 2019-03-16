@@ -16,6 +16,7 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Url Image</span></th>
+            <th><span>Image</span></th>
             <th><span>Date D Ajout</span></th>
             <th><span>Date Validation</span></th>
             <th><span>Flag</span></th>
@@ -29,6 +30,10 @@
             <tr *ngFor="let image of images ;trackBy: trackId">
                 <td><a [routerLink]="['/image', image.id, 'view' ]">{{image.id}}</a></td>
                 <td>{{image.urlImage}}</td>
+                <td>
+                    <a *ngIf="image.image" (click)="openFile(image.imageContentType, image.image)">open</a>
+                    <span *ngIf="image.image">{{image.imageContentType}}, {{byteSize(image.image)}}</span>
+                </td>
                 <td>{{image.dateDAjout | date:'medium'}}</td>
                 <td>{{image.dateValidation | date:'medium'}}</td>
                 <td>{{image.flag}}</td>

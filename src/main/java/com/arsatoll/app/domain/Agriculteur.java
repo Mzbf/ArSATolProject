@@ -31,7 +31,7 @@ public class Agriculteur implements Serializable {
 
     @OneToMany(mappedBy = "agriculteur")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Image> imageSends = new HashSet<>();
+    private Set<ImageAttaque> imageSends = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -54,29 +54,29 @@ public class Agriculteur implements Serializable {
         this.localistion = localistion;
     }
 
-    public Set<Image> getImageSends() {
+    public Set<ImageAttaque> getImageSends() {
         return imageSends;
     }
 
-    public Agriculteur imageSends(Set<Image> images) {
-        this.imageSends = images;
+    public Agriculteur imageSends(Set<ImageAttaque> imageAttaques) {
+        this.imageSends = imageAttaques;
         return this;
     }
 
-    public Agriculteur addImageSend(Image image) {
-        this.imageSends.add(image);
-        image.setAgriculteur(this);
+    public Agriculteur addImageSend(ImageAttaque imageAttaque) {
+        this.imageSends.add(imageAttaque);
+        imageAttaque.setAgriculteur(this);
         return this;
     }
 
-    public Agriculteur removeImageSend(Image image) {
-        this.imageSends.remove(image);
-        image.setAgriculteur(null);
+    public Agriculteur removeImageSend(ImageAttaque imageAttaque) {
+        this.imageSends.remove(imageAttaque);
+        imageAttaque.setAgriculteur(null);
         return this;
     }
 
-    public void setImageSends(Set<Image> images) {
-        this.imageSends = images;
+    public void setImageSends(Set<ImageAttaque> imageAttaques) {
+        this.imageSends = imageAttaques;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -1,32 +1,37 @@
 entity Insecte {
 
-	nomInsecte String,
-    nomScienInsecte String,
-    cycleBio String,
-    flag Boolean,
+	nomInsecte String required,
+    nomScienInsecte String required,
+	insecteImage Blob,
+	description TextBlob,
+    cycleBio TextBlob,
+	autrePlante TextBlob,
+	imageCycle Blob,
 	dateValidation Instant,
     dateAjout Instant
     
 }
 entity Attaque {
     
-	localisation String,
-    description String,
+	localisation Localisation required,
+    description TextBlob ,
     flag Boolean,
+    typeDegat TypeDegat required,
 	dateValidation Instant,
     dateAjout Instant
 }
 entity MethodeLutte{
-	methodeCulturale String
-	traitement String
+	methodeCulturale TextBlob,
+	traitement TextBlob
 }
 
 entity Culture {
-	nomCulture String 
+	nomCulture String required
 }
-entity Image {
+entity ImageAttaque {
 
 urlImage String,
+image Blob,
 dateDAjout Instant,
 dateValidation Instant,
 flag Boolean
@@ -58,8 +63,17 @@ entity Ordre{
 
 }
 
-enum Language {
-    FRENCH, ENGLISH, SPANISH
+enum TypeDegat {
+    TACHE,
+    GALERIE,
+    DEFORMATION,
+    NECROSE
+}
+enum Localisation {
+    FEUILLES,
+    FRUITS,
+    FLEURES,
+    TIGE
 }
 
 relationship OneToMany {
@@ -85,17 +99,14 @@ relationship OneToOne {
 	Insecte{methode} to MethodeLutte
 }
 relationship OneToMany {
-	Attaque{imageAttaque} to Image
+	Attaque{imageAttaque} to ImageAttaque
 }
 relationship OneToMany {
-	Insecte{imageInsecte} to Image
+	Insecte{imageInsecte} to ImageAttaque
 }
 relationship OneToMany {
-	Agriculteur{imageSend} to Image
+	Agriculteur{imageSend} to ImageAttaque
 }
-
-
-
 
 
 

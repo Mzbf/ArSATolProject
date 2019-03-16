@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
@@ -45,6 +46,11 @@ public class ImageResourceIntTest {
 
     private static final String DEFAULT_URL_IMAGE = "AAAAAAAAAA";
     private static final String UPDATED_URL_IMAGE = "BBBBBBBBBB";
+
+    private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
     private static final Instant DEFAULT_DATE_D_AJOUT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATE_D_AJOUT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -101,6 +107,8 @@ public class ImageResourceIntTest {
     public static Image createEntity(EntityManager em) {
         Image image = new Image()
             .urlImage(DEFAULT_URL_IMAGE)
+            .image(DEFAULT_IMAGE)
+            .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
             .dateDAjout(DEFAULT_DATE_D_AJOUT)
             .dateValidation(DEFAULT_DATE_VALIDATION)
             .flag(DEFAULT_FLAG);
@@ -128,6 +136,8 @@ public class ImageResourceIntTest {
         assertThat(imageList).hasSize(databaseSizeBeforeCreate + 1);
         Image testImage = imageList.get(imageList.size() - 1);
         assertThat(testImage.getUrlImage()).isEqualTo(DEFAULT_URL_IMAGE);
+        assertThat(testImage.getImage()).isEqualTo(DEFAULT_IMAGE);
+        assertThat(testImage.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
         assertThat(testImage.getDateDAjout()).isEqualTo(DEFAULT_DATE_D_AJOUT);
         assertThat(testImage.getDateValidation()).isEqualTo(DEFAULT_DATE_VALIDATION);
         assertThat(testImage.isFlag()).isEqualTo(DEFAULT_FLAG);
@@ -164,6 +174,8 @@ public class ImageResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(image.getId().intValue())))
             .andExpect(jsonPath("$.[*].urlImage").value(hasItem(DEFAULT_URL_IMAGE.toString())))
+            .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
             .andExpect(jsonPath("$.[*].dateDAjout").value(hasItem(DEFAULT_DATE_D_AJOUT.toString())))
             .andExpect(jsonPath("$.[*].dateValidation").value(hasItem(DEFAULT_DATE_VALIDATION.toString())))
             .andExpect(jsonPath("$.[*].flag").value(hasItem(DEFAULT_FLAG.booleanValue())));
@@ -181,6 +193,8 @@ public class ImageResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(image.getId().intValue()))
             .andExpect(jsonPath("$.urlImage").value(DEFAULT_URL_IMAGE.toString()))
+            .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
             .andExpect(jsonPath("$.dateDAjout").value(DEFAULT_DATE_D_AJOUT.toString()))
             .andExpect(jsonPath("$.dateValidation").value(DEFAULT_DATE_VALIDATION.toString()))
             .andExpect(jsonPath("$.flag").value(DEFAULT_FLAG.booleanValue()));
@@ -208,6 +222,8 @@ public class ImageResourceIntTest {
         em.detach(updatedImage);
         updatedImage
             .urlImage(UPDATED_URL_IMAGE)
+            .image(UPDATED_IMAGE)
+            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
             .dateDAjout(UPDATED_DATE_D_AJOUT)
             .dateValidation(UPDATED_DATE_VALIDATION)
             .flag(UPDATED_FLAG);
@@ -222,6 +238,8 @@ public class ImageResourceIntTest {
         assertThat(imageList).hasSize(databaseSizeBeforeUpdate);
         Image testImage = imageList.get(imageList.size() - 1);
         assertThat(testImage.getUrlImage()).isEqualTo(UPDATED_URL_IMAGE);
+        assertThat(testImage.getImage()).isEqualTo(UPDATED_IMAGE);
+        assertThat(testImage.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testImage.getDateDAjout()).isEqualTo(UPDATED_DATE_D_AJOUT);
         assertThat(testImage.getDateValidation()).isEqualTo(UPDATED_DATE_VALIDATION);
         assertThat(testImage.isFlag()).isEqualTo(UPDATED_FLAG);

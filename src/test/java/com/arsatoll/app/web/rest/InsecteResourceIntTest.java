@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
@@ -49,11 +50,24 @@ public class InsecteResourceIntTest {
     private static final String DEFAULT_NOM_SCIEN_INSECTE = "AAAAAAAAAA";
     private static final String UPDATED_NOM_SCIEN_INSECTE = "BBBBBBBBBB";
 
+    private static final byte[] DEFAULT_INSECTE_IMAGE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_INSECTE_IMAGE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_INSECTE_IMAGE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_INSECTE_IMAGE_CONTENT_TYPE = "image/png";
+
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     private static final String DEFAULT_CYCLE_BIO = "AAAAAAAAAA";
     private static final String UPDATED_CYCLE_BIO = "BBBBBBBBBB";
 
-    private static final Boolean DEFAULT_FLAG = false;
-    private static final Boolean UPDATED_FLAG = true;
+    private static final String DEFAULT_AUTRE_PLANTE = "AAAAAAAAAA";
+    private static final String UPDATED_AUTRE_PLANTE = "BBBBBBBBBB";
+
+    private static final byte[] DEFAULT_IMAGE_CYCLE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_IMAGE_CYCLE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_IMAGE_CYCLE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_IMAGE_CYCLE_CONTENT_TYPE = "image/png";
 
     private static final Instant DEFAULT_DATE_VALIDATION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_DATE_VALIDATION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -108,8 +122,13 @@ public class InsecteResourceIntTest {
         Insecte insecte = new Insecte()
             .nomInsecte(DEFAULT_NOM_INSECTE)
             .nomScienInsecte(DEFAULT_NOM_SCIEN_INSECTE)
+            .insecteImage(DEFAULT_INSECTE_IMAGE)
+            .insecteImageContentType(DEFAULT_INSECTE_IMAGE_CONTENT_TYPE)
+            .description(DEFAULT_DESCRIPTION)
             .cycleBio(DEFAULT_CYCLE_BIO)
-            .flag(DEFAULT_FLAG)
+            .autrePlante(DEFAULT_AUTRE_PLANTE)
+            .imageCycle(DEFAULT_IMAGE_CYCLE)
+            .imageCycleContentType(DEFAULT_IMAGE_CYCLE_CONTENT_TYPE)
             .dateValidation(DEFAULT_DATE_VALIDATION)
             .dateAjout(DEFAULT_DATE_AJOUT);
         return insecte;
@@ -137,8 +156,13 @@ public class InsecteResourceIntTest {
         Insecte testInsecte = insecteList.get(insecteList.size() - 1);
         assertThat(testInsecte.getNomInsecte()).isEqualTo(DEFAULT_NOM_INSECTE);
         assertThat(testInsecte.getNomScienInsecte()).isEqualTo(DEFAULT_NOM_SCIEN_INSECTE);
+        assertThat(testInsecte.getInsecteImage()).isEqualTo(DEFAULT_INSECTE_IMAGE);
+        assertThat(testInsecte.getInsecteImageContentType()).isEqualTo(DEFAULT_INSECTE_IMAGE_CONTENT_TYPE);
+        assertThat(testInsecte.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testInsecte.getCycleBio()).isEqualTo(DEFAULT_CYCLE_BIO);
-        assertThat(testInsecte.isFlag()).isEqualTo(DEFAULT_FLAG);
+        assertThat(testInsecte.getAutrePlante()).isEqualTo(DEFAULT_AUTRE_PLANTE);
+        assertThat(testInsecte.getImageCycle()).isEqualTo(DEFAULT_IMAGE_CYCLE);
+        assertThat(testInsecte.getImageCycleContentType()).isEqualTo(DEFAULT_IMAGE_CYCLE_CONTENT_TYPE);
         assertThat(testInsecte.getDateValidation()).isEqualTo(DEFAULT_DATE_VALIDATION);
         assertThat(testInsecte.getDateAjout()).isEqualTo(DEFAULT_DATE_AJOUT);
     }
@@ -164,6 +188,42 @@ public class InsecteResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNomInsecteIsRequired() throws Exception {
+        int databaseSizeBeforeTest = insecteRepository.findAll().size();
+        // set the field null
+        insecte.setNomInsecte(null);
+
+        // Create the Insecte, which fails.
+
+        restInsecteMockMvc.perform(post("/api/insectes")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(insecte)))
+            .andExpect(status().isBadRequest());
+
+        List<Insecte> insecteList = insecteRepository.findAll();
+        assertThat(insecteList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNomScienInsecteIsRequired() throws Exception {
+        int databaseSizeBeforeTest = insecteRepository.findAll().size();
+        // set the field null
+        insecte.setNomScienInsecte(null);
+
+        // Create the Insecte, which fails.
+
+        restInsecteMockMvc.perform(post("/api/insectes")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(insecte)))
+            .andExpect(status().isBadRequest());
+
+        List<Insecte> insecteList = insecteRepository.findAll();
+        assertThat(insecteList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllInsectes() throws Exception {
         // Initialize the database
         insecteRepository.saveAndFlush(insecte);
@@ -175,8 +235,13 @@ public class InsecteResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(insecte.getId().intValue())))
             .andExpect(jsonPath("$.[*].nomInsecte").value(hasItem(DEFAULT_NOM_INSECTE.toString())))
             .andExpect(jsonPath("$.[*].nomScienInsecte").value(hasItem(DEFAULT_NOM_SCIEN_INSECTE.toString())))
+            .andExpect(jsonPath("$.[*].insecteImageContentType").value(hasItem(DEFAULT_INSECTE_IMAGE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].insecteImage").value(hasItem(Base64Utils.encodeToString(DEFAULT_INSECTE_IMAGE))))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].cycleBio").value(hasItem(DEFAULT_CYCLE_BIO.toString())))
-            .andExpect(jsonPath("$.[*].flag").value(hasItem(DEFAULT_FLAG.booleanValue())))
+            .andExpect(jsonPath("$.[*].autrePlante").value(hasItem(DEFAULT_AUTRE_PLANTE.toString())))
+            .andExpect(jsonPath("$.[*].imageCycleContentType").value(hasItem(DEFAULT_IMAGE_CYCLE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].imageCycle").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE_CYCLE))))
             .andExpect(jsonPath("$.[*].dateValidation").value(hasItem(DEFAULT_DATE_VALIDATION.toString())))
             .andExpect(jsonPath("$.[*].dateAjout").value(hasItem(DEFAULT_DATE_AJOUT.toString())));
     }
@@ -194,8 +259,13 @@ public class InsecteResourceIntTest {
             .andExpect(jsonPath("$.id").value(insecte.getId().intValue()))
             .andExpect(jsonPath("$.nomInsecte").value(DEFAULT_NOM_INSECTE.toString()))
             .andExpect(jsonPath("$.nomScienInsecte").value(DEFAULT_NOM_SCIEN_INSECTE.toString()))
+            .andExpect(jsonPath("$.insecteImageContentType").value(DEFAULT_INSECTE_IMAGE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.insecteImage").value(Base64Utils.encodeToString(DEFAULT_INSECTE_IMAGE)))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.cycleBio").value(DEFAULT_CYCLE_BIO.toString()))
-            .andExpect(jsonPath("$.flag").value(DEFAULT_FLAG.booleanValue()))
+            .andExpect(jsonPath("$.autrePlante").value(DEFAULT_AUTRE_PLANTE.toString()))
+            .andExpect(jsonPath("$.imageCycleContentType").value(DEFAULT_IMAGE_CYCLE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.imageCycle").value(Base64Utils.encodeToString(DEFAULT_IMAGE_CYCLE)))
             .andExpect(jsonPath("$.dateValidation").value(DEFAULT_DATE_VALIDATION.toString()))
             .andExpect(jsonPath("$.dateAjout").value(DEFAULT_DATE_AJOUT.toString()));
     }
@@ -223,8 +293,13 @@ public class InsecteResourceIntTest {
         updatedInsecte
             .nomInsecte(UPDATED_NOM_INSECTE)
             .nomScienInsecte(UPDATED_NOM_SCIEN_INSECTE)
+            .insecteImage(UPDATED_INSECTE_IMAGE)
+            .insecteImageContentType(UPDATED_INSECTE_IMAGE_CONTENT_TYPE)
+            .description(UPDATED_DESCRIPTION)
             .cycleBio(UPDATED_CYCLE_BIO)
-            .flag(UPDATED_FLAG)
+            .autrePlante(UPDATED_AUTRE_PLANTE)
+            .imageCycle(UPDATED_IMAGE_CYCLE)
+            .imageCycleContentType(UPDATED_IMAGE_CYCLE_CONTENT_TYPE)
             .dateValidation(UPDATED_DATE_VALIDATION)
             .dateAjout(UPDATED_DATE_AJOUT);
 
@@ -239,8 +314,13 @@ public class InsecteResourceIntTest {
         Insecte testInsecte = insecteList.get(insecteList.size() - 1);
         assertThat(testInsecte.getNomInsecte()).isEqualTo(UPDATED_NOM_INSECTE);
         assertThat(testInsecte.getNomScienInsecte()).isEqualTo(UPDATED_NOM_SCIEN_INSECTE);
+        assertThat(testInsecte.getInsecteImage()).isEqualTo(UPDATED_INSECTE_IMAGE);
+        assertThat(testInsecte.getInsecteImageContentType()).isEqualTo(UPDATED_INSECTE_IMAGE_CONTENT_TYPE);
+        assertThat(testInsecte.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testInsecte.getCycleBio()).isEqualTo(UPDATED_CYCLE_BIO);
-        assertThat(testInsecte.isFlag()).isEqualTo(UPDATED_FLAG);
+        assertThat(testInsecte.getAutrePlante()).isEqualTo(UPDATED_AUTRE_PLANTE);
+        assertThat(testInsecte.getImageCycle()).isEqualTo(UPDATED_IMAGE_CYCLE);
+        assertThat(testInsecte.getImageCycleContentType()).isEqualTo(UPDATED_IMAGE_CYCLE_CONTENT_TYPE);
         assertThat(testInsecte.getDateValidation()).isEqualTo(UPDATED_DATE_VALIDATION);
         assertThat(testInsecte.getDateAjout()).isEqualTo(UPDATED_DATE_AJOUT);
     }

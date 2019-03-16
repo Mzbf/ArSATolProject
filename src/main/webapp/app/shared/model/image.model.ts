@@ -6,6 +6,8 @@ import { IAgriculteur } from 'app/shared/model/agriculteur.model';
 export interface IImage {
     id?: number;
     urlImage?: string;
+    imageContentType?: string;
+    image?: any;
     dateDAjout?: Moment;
     dateValidation?: Moment;
     flag?: boolean;
@@ -18,6 +20,8 @@ export class Image implements IImage {
     constructor(
         public id?: number,
         public urlImage?: string,
+        public imageContentType?: string,
+        public image?: any,
         public dateDAjout?: Moment,
         public dateValidation?: Moment,
         public flag?: boolean,

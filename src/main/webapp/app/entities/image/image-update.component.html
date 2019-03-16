@@ -15,6 +15,24 @@
                         [(ngModel)]="image.urlImage" />
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" for="field_image">Image</label>
+                    <div>
+                        <div *ngIf="image.image" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(image.imageContentType, image.image)">open</a><br>
+                            <span class="pull-left">{{image.imageContentType}}, {{byteSize(image.image)}}</span>
+                            <button type="button" (click)="image.image=null;image.imageContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_image" (change)="setFileData($event, image, 'image', false)"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="image" id="field_image"
+                        [(ngModel)]="image.image" />
+                    <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                        [(ngModel)]="image.imageContentType" />
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" for="field_dateDAjout">Date D Ajout</label>
                     <div class="d-flex">
                         <input id="field_dateDAjout" type="datetime-local" class="form-control" name="dateDAjout" [(ngModel)]="dateDAjout" placeholder="YYYY-MM-DD HH:mm"

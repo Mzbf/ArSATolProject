@@ -6,6 +6,11 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
             "fieldName": "dateDAjout",
             "fieldType": "Instant"
         },

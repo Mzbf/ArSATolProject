@@ -61,6 +61,7 @@ public class CacheConfiguration {
             cm.createCache(com.arsatoll.app.domain.SuperFamille.class.getName(), jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.Famille.class.getName(), jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.Ordre.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.ImageAttaque.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

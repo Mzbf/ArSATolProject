@@ -7,7 +7,7 @@ import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { AttaqueService } from 'app/entities/attaque/attaque.service';
-import { IAttaque, Attaque } from 'app/shared/model/attaque.model';
+import { IAttaque, Attaque, Localisation, TypeDegat } from 'app/shared/model/attaque.model';
 
 describe('Service Tests', () => {
     describe('Attaque Service', () => {
@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new Attaque(0, 'AAAAAAA', 'AAAAAAA', false, currentDate, currentDate);
+            elemDefault = new Attaque(0, Localisation.FEUILLES, 'AAAAAAA', false, TypeDegat.TACHE, currentDate, currentDate);
         });
 
         describe('Service methods', async () => {
@@ -76,6 +76,7 @@ describe('Service Tests', () => {
                         localisation: 'BBBBBB',
                         description: 'BBBBBB',
                         flag: true,
+                        typeDegat: 'BBBBBB',
                         dateValidation: currentDate.format(DATE_TIME_FORMAT),
                         dateAjout: currentDate.format(DATE_TIME_FORMAT)
                     },
@@ -103,6 +104,7 @@ describe('Service Tests', () => {
                         localisation: 'BBBBBB',
                         description: 'BBBBBB',
                         flag: true,
+                        typeDegat: 'BBBBBB',
                         dateValidation: currentDate.format(DATE_TIME_FORMAT),
                         dateAjout: currentDate.format(DATE_TIME_FORMAT)
                     },

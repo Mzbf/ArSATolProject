@@ -10,7 +10,7 @@
         {
             "relationshipType": "one-to-many",
             "relationshipName": "imageSend",
-            "otherEntityName": "image",
+            "otherEntityName": "imageAttaque",
             "otherEntityRelationshipName": "agriculteur"
         }
     ],

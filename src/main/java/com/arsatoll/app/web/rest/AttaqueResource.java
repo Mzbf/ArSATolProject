@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -40,7 +41,7 @@ public class AttaqueResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/attaques")
-    public ResponseEntity<Attaque> createAttaque(@RequestBody Attaque attaque) throws URISyntaxException {
+    public ResponseEntity<Attaque> createAttaque(@Valid @RequestBody Attaque attaque) throws URISyntaxException {
         log.debug("REST request to save Attaque : {}", attaque);
         if (attaque.getId() != null) {
             throw new BadRequestAlertException("A new attaque cannot already have an ID", ENTITY_NAME, "idexists");
@@ -61,7 +62,7 @@ public class AttaqueResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/attaques")
-    public ResponseEntity<Attaque> updateAttaque(@RequestBody Attaque attaque) throws URISyntaxException {
+    public ResponseEntity<Attaque> updateAttaque(@Valid @RequestBody Attaque attaque) throws URISyntaxException {
         log.debug("REST request to update Attaque : {}", attaque);
         if (attaque.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

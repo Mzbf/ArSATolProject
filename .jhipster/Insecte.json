@@ -3,19 +3,42 @@
     "fields": [
         {
             "fieldName": "nomInsecte",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "nomScienInsecte",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "insecteImage",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         },
         {
             "fieldName": "cycleBio",
-            "fieldType": "String"
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         },
         {
-            "fieldName": "flag",
-            "fieldType": "Boolean"
+            "fieldName": "autrePlante",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imageCycle",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
         },
         {
             "fieldName": "dateValidation",
@@ -44,7 +67,7 @@
         {
             "relationshipType": "one-to-many",
             "relationshipName": "imageInsecte",
-            "otherEntityName": "image",
+            "otherEntityName": "imageAttaque",
             "otherEntityRelationshipName": "insecte"
         },
         {
