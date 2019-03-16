@@ -43,6 +43,9 @@ public class Attaque implements Serializable {
     @Column(name = "date_ajout")
     private Instant dateAjout;
 
+    @Column(name = "typeDegat")
+    private TypeDegat typeDegat;
+
     @ManyToOne
     @JsonIgnoreProperties("attaques")
     private Insecte insecte;
@@ -61,6 +64,7 @@ public class Attaque implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("adminAjoutAttaques")
     private Administrateur administrateur;
+
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -209,6 +213,15 @@ public class Attaque implements Serializable {
         return this;
     }
 
+
+    public TypeDegat getTypeDegat() {
+        return typeDegat;
+    }
+
+    public void setTypeDegat(TypeDegat typeDegat) {
+        this.typeDegat = typeDegat;
+    }
+
     public void setAdministrateur(Administrateur administrateur) {
         this.administrateur = administrateur;
     }
@@ -233,6 +246,7 @@ public class Attaque implements Serializable {
     public int hashCode() {
         return Objects.hashCode(getId());
     }
+
 
     @Override
     public String toString() {
