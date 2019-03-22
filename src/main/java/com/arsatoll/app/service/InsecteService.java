@@ -1,6 +1,7 @@
 package com.arsatoll.app.service;
 
 import com.arsatoll.app.domain.Insecte;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,4 +41,7 @@ public interface InsecteService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+
+
 }

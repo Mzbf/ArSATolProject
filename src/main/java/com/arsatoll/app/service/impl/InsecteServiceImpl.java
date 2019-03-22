@@ -6,6 +6,7 @@ import com.arsatoll.app.repository.InsecteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -74,4 +75,5 @@ public class InsecteServiceImpl implements InsecteService {
     public void delete(Long id) {
         log.debug("Request to delete Insecte : {}", id);        insecteRepository.deleteById(id);
     }
+
 }

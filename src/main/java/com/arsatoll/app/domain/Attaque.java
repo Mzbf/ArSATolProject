@@ -63,6 +63,7 @@ public class Attaque implements Serializable {
     @OneToMany(mappedBy = "attaque")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ImageAttaque> imageAttaques = new HashSet<>();
+
     @ManyToOne
     @JsonIgnoreProperties("attaques")
     private Culture culture;
@@ -184,11 +185,6 @@ public class Attaque implements Serializable {
         return this;
     }
 
-    public Attaque addImageAttaque(ImageAttaque imageAttaque) {
-        this.imageAttaques.add(imageAttaque);
-        imageAttaque.setAttaque(this);
-        return this;
-    }
 
     public Attaque removeImageAttaque(ImageAttaque imageAttaque) {
         this.imageAttaques.remove(imageAttaque);

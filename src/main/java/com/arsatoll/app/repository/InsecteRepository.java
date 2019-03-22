@@ -2,6 +2,7 @@ package com.arsatoll.app.repository;
 
 import com.arsatoll.app.domain.Insecte;
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 
