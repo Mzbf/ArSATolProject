@@ -15,31 +15,37 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Famille.
+        Added the entity ImageEnvoye.
     -->
-    <changeSet id="20190216191718-1" author="jhipster">
-        <createTable tableName="famille">
+    <changeSet id="20190328180917-1" author="jhipster">
+        <createTable tableName="image_envoye">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="nom_famille" type="varchar(255)">
+            <column name="url_image" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="description" type="clob">
+            <column name="date_d_ajout" type="datetime">
                 <constraints nullable="true" />
             </column>
 
-            <column name="image_famiile" type="varchar(255)">
+            <column name="date_validation" type="datetime">
                 <constraints nullable="true" />
             </column>
 
-            <column name="ordre_id" type="bigint">
+            <column name="flag" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="agriculteur_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="image_envoye" columnName="date_d_ajout" columnDataType="datetime"/>
+        <dropDefaultValue tableName="image_envoye" columnName="date_validation" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

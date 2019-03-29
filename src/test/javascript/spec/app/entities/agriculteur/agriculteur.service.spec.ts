@@ -55,7 +55,7 @@ describe('Service Tests', () => {
             it('should update a Agriculteur', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        localistion: 'BBBBBB'
+                        pays: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -72,7 +72,7 @@ describe('Service Tests', () => {
             it('should return a list of Agriculteur', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        localistion: 'BBBBBB'
+                        pays: 'BBBBBB'
                     },
                     elemDefault
                 );

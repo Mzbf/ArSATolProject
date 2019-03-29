@@ -26,8 +26,60 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="image_culture" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="pays_culture" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="culture_culture_maladie">
+            <column name="culture_maladie_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="culture_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="culture_id, culture_maladie_id" tableName="culture_culture_maladie"/>
+        
+        <createTable tableName="culture_culture_insecte_utile">
+            <column name="culture_insecte_utile_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="culture_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="culture_id, culture_insecte_utile_id" tableName="culture_culture_insecte_utile"/>
+        
+        <createTable tableName="culture_cultures_ravageur">
+            <column name="cultures_ravageur_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="culture_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="culture_id, cultures_ravageur_id" tableName="culture_cultures_ravageur"/>
+        
+        <createTable tableName="culture_culture_herbe">
+            <column name="culture_herbe_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="culture_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="culture_id, culture_herbe_id" tableName="culture_culture_herbe"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

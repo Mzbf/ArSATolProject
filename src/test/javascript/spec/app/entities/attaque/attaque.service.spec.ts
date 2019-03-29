@@ -7,7 +7,7 @@ import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { AttaqueService } from 'app/entities/attaque/attaque.service';
-import { IAttaque, Attaque, Localisation, TypeDegat } from 'app/shared/model/attaque.model';
+import { IAttaque, Attaque, Localisation } from 'app/shared/model/attaque.model';
 
 describe('Service Tests', () => {
     describe('Attaque Service', () => {
@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new Attaque(0, Localisation.FEUILLES, 'AAAAAAA', false, TypeDegat.TACHE, currentDate, currentDate);
+            elemDefault = new Attaque(0, 'AAAAAAA', false, Localisation.FEUILLES, currentDate, currentDate, 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
@@ -73,12 +73,12 @@ describe('Service Tests', () => {
             it('should update a Attaque', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        localisation: 'BBBBBB',
                         description: 'BBBBBB',
                         flag: true,
-                        typeDegat: 'BBBBBB',
+                        localisation: 'BBBBBB',
                         dateValidation: currentDate.format(DATE_TIME_FORMAT),
-                        dateAjout: currentDate.format(DATE_TIME_FORMAT)
+                        dateAjout: currentDate.format(DATE_TIME_FORMAT),
+                        imagesAttaque: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -101,12 +101,12 @@ describe('Service Tests', () => {
             it('should return a list of Attaque', async () => {
                 const returnedFromService = Object.assign(
                     {
-                        localisation: 'BBBBBB',
                         description: 'BBBBBB',
                         flag: true,
-                        typeDegat: 'BBBBBB',
+                        localisation: 'BBBBBB',
                         dateValidation: currentDate.format(DATE_TIME_FORMAT),
-                        dateAjout: currentDate.format(DATE_TIME_FORMAT)
+                        dateAjout: currentDate.format(DATE_TIME_FORMAT),
+                        imagesAttaque: 'BBBBBB'
                     },
                     elemDefault
                 );

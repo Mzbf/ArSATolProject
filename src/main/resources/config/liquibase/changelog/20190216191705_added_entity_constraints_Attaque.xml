@@ -8,11 +8,11 @@
     -->
     <changeSet id="20190216191705-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="insecte_id"
+        <addForeignKeyConstraint baseColumnNames="insecte_ravageur_id"
                                  baseTableName="attaque"
-                                 constraintName="fk_attaque_insecte_id"
+                                 constraintName="fk_attaque_insecte_ravageur_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="insecte"/>
+                                 referencedTableName="insecte_ravageur"/>
 
         <addForeignKeyConstraint baseColumnNames="culture_id"
                                  baseTableName="attaque"
@@ -26,11 +26,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="chercheur"/>
 
-        <addForeignKeyConstraint baseColumnNames="administrateur_id"
+        <addForeignKeyConstraint baseColumnNames="type_degat_id"
                                  baseTableName="attaque"
-                                 constraintName="fk_attaque_administrateur_id"
+                                 constraintName="fk_attaque_type_degat_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="administrateur"/>
+                                 referencedTableName="type_degat"/>
 
     </changeSet>
 </databaseChangeLog>

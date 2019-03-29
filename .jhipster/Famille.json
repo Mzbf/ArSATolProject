@@ -1,10 +1,43 @@
 {
     "name": "Famille",
-    "fields": [],
-    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nomFamille",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imageFamiile",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "familleRavageur",
+            "otherEntityName": "insecteRavageur",
+            "otherEntityRelationshipName": "famille"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "familleInseUtile",
+            "otherEntityName": "insecteUtile",
+            "otherEntityRelationshipName": "famille"
+        },
+        {
+            "relationshipName": "ordre",
+            "otherEntityName": "ordre",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20190216191718",
     "entityTableName": "famille",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

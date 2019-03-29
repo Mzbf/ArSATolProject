@@ -4,13 +4,35 @@
         {
             "fieldName": "institut",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "pays",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "specialite",
+            "fieldType": "String"
         }
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "chercheur"
+        },
+        {
             "relationshipType": "one-to-many",
-            "relationshipName": "ajoutInsecte",
-            "otherEntityName": "insecte",
+            "relationshipName": "ajoutRavageur",
+            "otherEntityName": "insecteRavageur",
+            "otherEntityRelationshipName": "chercheur"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "ajoutInsUtile",
+            "otherEntityName": "insecteUtile",
             "otherEntityRelationshipName": "chercheur"
         },
         {
@@ -22,7 +44,7 @@
     ],
     "changelogDate": "20190216191713",
     "entityTableName": "chercheur",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

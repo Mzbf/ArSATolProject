@@ -5,23 +5,36 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190216191704_added_entity_Insecte.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191705_added_entity_Attaque.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191706_added_entity_MethodeLutte.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191707_added_entity_Culture.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190216191708_added_entity_Image.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190216191711_added_entity_Role.xml" relativeToChangelogFile="false"/>
+
     <include file="config/liquibase/changelog/20190216191712_added_entity_Agriculteur.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191713_added_entity_Chercheur.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190216191714_added_entity_Administrateur.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190216191717_added_entity_SuperFamille.xml" relativeToChangelogFile="false"/>
+
+
     <include file="config/liquibase/changelog/20190216191718_added_entity_Famille.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191719_added_entity_Ordre.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190316030442_added_entity_ImageAttaque.xml" relativeToChangelogFile="false"/>
+
+
+    <include file="config/liquibase/changelog/20190328180910_added_entity_InsecteUtile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180911_added_entity_InsecteRavageur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180912_added_entity_Maladie.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180913_added_entity_Herbe.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180917_added_entity_ImageEnvoye.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180922_added_entity_TypeDegat.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20190216191704_added_entity_constraints_Insecte.xml" relativeToChangelogFile="false"/>
+
+    <include file="config/liquibase/changelog/20190328180910_added_entity_constraints_InsecteUtile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180911_added_entity_constraints_InsecteRavageur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191707_added_entity_constraints_Culture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191706_added_entity_constraints_MethodeLutte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180917_added_entity_constraints_ImageEnvoye.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191712_added_entity_constraints_Agriculteur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191713_added_entity_constraints_Chercheur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191718_added_entity_constraints_Famille.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180912_added_entity_constraints_Maladie.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190328180913_added_entity_constraints_Herbe.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191705_added_entity_constraints_Attaque.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190216191708_added_entity_constraints_Image.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190316030442_added_entity_constraints_ImageAttaque.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

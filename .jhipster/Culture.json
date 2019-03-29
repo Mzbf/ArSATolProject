@@ -7,6 +7,14 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "imageCulture",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "paysCulture",
+            "fieldType": "String"
         }
     ],
     "relationships": [
@@ -15,11 +23,43 @@
             "relationshipName": "attaque",
             "otherEntityName": "attaque",
             "otherEntityRelationshipName": "culture"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "culture",
+            "relationshipName": "cultureMaladie",
+            "otherEntityName": "maladie",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "culture",
+            "relationshipName": "cultureInsecteUtile",
+            "otherEntityName": "insecteUtile",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "culture",
+            "relationshipName": "culturesRavageur",
+            "otherEntityName": "insecteRavageur",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "culture",
+            "relationshipName": "cultureHerbe",
+            "otherEntityName": "herbe",
+            "otherEntityField": "id",
+            "ownerSide": true
         }
     ],
     "changelogDate": "20190216191707",
     "entityTableName": "culture",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

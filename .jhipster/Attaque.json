@@ -2,14 +2,6 @@
     "name": "Attaque",
     "fields": [
         {
-            "fieldName": "localisation",
-            "fieldType": "Localisation",
-            "fieldValues": "FEUILLES,FRUITS,FLEURES,TIGE",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "description",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
@@ -19,12 +11,9 @@
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "typeDegat",
-            "fieldType": "TypeDegat",
-            "fieldValues": "TACHE,GALERIE,DEFORMATION,NECROSE",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldName": "localisation",
+            "fieldType": "Localisation",
+            "fieldValues": "FEUILLES,FRUITS,FLEURES,TIGE,RACINE"
         },
         {
             "fieldName": "dateValidation",
@@ -33,20 +22,18 @@
         {
             "fieldName": "dateAjout",
             "fieldType": "Instant"
+        },
+        {
+            "fieldName": "imagesAttaque",
+            "fieldType": "String"
         }
     ],
     "relationships": [
         {
-            "relationshipName": "insecte",
-            "otherEntityName": "insecte",
+            "relationshipName": "insecteRavageur",
+            "otherEntityName": "insecteRavageur",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "imageAttaque",
-            "otherEntityName": "imageAttaque",
-            "otherEntityRelationshipName": "attaque"
         },
         {
             "relationshipName": "culture",
@@ -61,15 +48,15 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "administrateur",
-            "otherEntityName": "administrateur",
+            "relationshipName": "typeDegat",
+            "otherEntityName": "typeDegat",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190216191705",
     "entityTableName": "attaque",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

@@ -1,0 +1,403 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="mzbf (generated)" id="1553872618416-1">
+        <createTable tableName="agriculteur">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="agriculteurPK"/>
+            </column>
+            <column name="pays" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-2">
+        <createTable tableName="attaque">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="attaquePK"/>
+            </column>
+            <column name="date_ajout" type="TINYBLOB"/>
+            <column name="date_validation" type="TINYBLOB"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="flag" type="BIT"/>
+            <column name="images_attaque" type="VARCHAR(255)"/>
+            <column name="localisation" type="VARCHAR(255)"/>
+            <column name="chercheur_id" type="BIGINT"/>
+            <column name="culture_id" type="BIGINT"/>
+            <column name="insecte_ravageur_id" type="BIGINT"/>
+            <column name="type_degat_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-3">
+        <createTable tableName="chercheur">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="chercheurPK"/>
+            </column>
+            <column name="institut" type="VARCHAR(255)"/>
+            <column name="pays" type="VARCHAR(255)"/>
+            <column name="specialite" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-4">
+        <createTable tableName="culture">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="culturePK"/>
+            </column>
+            <column name="image_culture" type="VARCHAR(255)"/>
+            <column name="nom_culture" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pays_culture" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-5">
+        <createTable tableName="culture_culture_herbe">
+            <column name="culture_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="culture_herbe_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-6">
+        <createTable tableName="culture_culture_insecte_utile">
+            <column name="culture_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="culture_insecte_utile_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-7">
+        <createTable tableName="culture_culture_maladie">
+            <column name="culture_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="culture_maladie_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-8">
+        <createTable tableName="culture_cultures_ravageur">
+            <column name="culture_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cultures_ravageur_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-9">
+        <createTable tableName="famille">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="famillePK"/>
+            </column>
+            <column name="description" type="LONGTEXT"/>
+            <column name="image_famiile" type="VARCHAR(255)"/>
+            <column name="nom_famille" type="VARCHAR(255)"/>
+            <column name="ordre_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-10">
+        <createTable tableName="herbe">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="herbePK"/>
+            </column>
+            <column name="description" type="LONGTEXT"/>
+            <column name="images_herbe" type="VARCHAR(255)"/>
+            <column name="nom_herbe" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-11">
+        <createTable tableName="image_envoye">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="image_envoyePK"/>
+            </column>
+            <column name="date_d_ajout" type="TINYBLOB"/>
+            <column name="date_validation" type="TINYBLOB"/>
+            <column name="flag" type="BIT"/>
+            <column name="url_image" type="VARCHAR(255)"/>
+            <column name="agriculteur_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-12">
+        <createTable tableName="insecte_ravageur">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="insecte_ravageurPK"/>
+            </column>
+            <column name="autre_plante" type="LONGTEXT"/>
+            <column name="cycle_bio" type="LONGTEXT"/>
+            <column name="date_ajout" type="TINYBLOB"/>
+            <column name="date_validation" type="TINYBLOB"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="image_cycle" type="VARCHAR(255)"/>
+            <column name="insecte_image" type="VARCHAR(255)"/>
+            <column name="nom_insecte" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nom_scien_insecte" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chercheur_id" type="BIGINT"/>
+            <column name="famille_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-13">
+        <createTable tableName="insecte_utile">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="insecte_utilePK"/>
+            </column>
+            <column name="autre_plante" type="LONGTEXT"/>
+            <column name="cycle_bio" type="LONGTEXT"/>
+            <column name="date_ajout" type="TINYBLOB"/>
+            <column name="date_validation" type="TINYBLOB"/>
+            <column name="description" type="LONGTEXT"/>
+            <column name="image_cycle" type="VARCHAR(255)"/>
+            <column name="insecte_image" type="VARCHAR(255)"/>
+            <column name="nom_insecte" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nom_scien_insecte" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chercheur_id" type="BIGINT"/>
+            <column name="famille_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-14">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-15">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="TINYBLOB"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-16">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-17">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TINYBLOB"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TINYBLOB"/>
+            <column name="activated" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(6)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="TINYBLOB"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-18">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-19">
+        <createTable tableName="maladie">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="maladiePK"/>
+            </column>
+            <column name="description" type="LONGTEXT"/>
+            <column name="images_maladie" type="VARCHAR(255)"/>
+            <column name="nom_maladie" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-20">
+        <createTable tableName="methode_lutte">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="methode_luttePK"/>
+            </column>
+            <column name="image_ml" type="VARCHAR(255)"/>
+            <column name="methode_culturale" type="LONGTEXT"/>
+            <column name="traitement" type="LONGTEXT"/>
+            <column name="jhi_type" type="VARCHAR(255)"/>
+            <column name="herbe_id" type="BIGINT"/>
+            <column name="maladie_id" type="BIGINT"/>
+            <column name="ravageur_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-21">
+        <createTable tableName="ordre">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="ordrePK"/>
+            </column>
+            <column name="description" type="LONGTEXT"/>
+            <column name="image_ordre" type="VARCHAR(255)"/>
+            <column name="nom_ordre" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-22">
+        <createTable tableName="type_degat">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="type_degatPK"/>
+            </column>
+            <column name="type_deg" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-23">
+        <addPrimaryKey columnNames="culture_id, culture_herbe_id" tableName="culture_culture_herbe"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-24">
+        <addPrimaryKey columnNames="culture_id, culture_insecte_utile_id" tableName="culture_culture_insecte_utile"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-25">
+        <addPrimaryKey columnNames="culture_id, culture_maladie_id" tableName="culture_culture_maladie"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-26">
+        <addPrimaryKey columnNames="culture_id, cultures_ravageur_id" tableName="culture_cultures_ravageur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-27">
+        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-28">
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-29">
+        <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-30">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_AGRICULTEURUSER_ID_COL" tableName="agriculteur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-31">
+        <addUniqueConstraint columnNames="user_id" constraintName="UC_CHERCHEURUSER_ID_COL" tableName="chercheur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-32">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-33">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-34">
+        <addUniqueConstraint columnNames="herbe_id" constraintName="UC_METHODE_LUTTEHERBE_ID_COL" tableName="methode_lutte"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-35">
+        <addUniqueConstraint columnNames="maladie_id" constraintName="UC_METHODE_LUTTEMALADIE_ID_COL" tableName="methode_lutte"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-36">
+        <addUniqueConstraint columnNames="ravageur_id" constraintName="UC_METHODE_LUTTERAVAGEUR_ID_COL" tableName="methode_lutte"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-37">
+        <addForeignKeyConstraint baseColumnNames="culture_id" baseTableName="culture_culture_maladie" constraintName="FK16bbnchu39h9a2qipgr4vauyn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="culture"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-38">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="agriculteur" constraintName="FK1f8r1fwkiax0p3bs1d75l8ttf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-39">
+        <addForeignKeyConstraint baseColumnNames="ravageur_id" baseTableName="methode_lutte" constraintName="FK21nk42req25jfntyrq5ib641y" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="insecte_ravageur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-40">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-41">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-42">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="chercheur" constraintName="FK3hnjglelddl6wfnbpm6nam13m" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-43">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-44">
+        <addForeignKeyConstraint baseColumnNames="culture_herbe_id" baseTableName="culture_culture_herbe" constraintName="FK5bcwuxcdngbcntyvqk3yvj4ry" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="herbe"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-45">
+        <addForeignKeyConstraint baseColumnNames="agriculteur_id" baseTableName="image_envoye" constraintName="FK68s0yx72dikqh9pkpfp8udxdq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="agriculteur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-46">
+        <addForeignKeyConstraint baseColumnNames="chercheur_id" baseTableName="insecte_ravageur" constraintName="FK7iws1j34g7mnfb3gu6awq8nul" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="chercheur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-47">
+        <addForeignKeyConstraint baseColumnNames="insecte_ravageur_id" baseTableName="attaque" constraintName="FK9ocj9hgjs9b9fse16y9mbpl9q" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="insecte_ravageur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-48">
+        <addForeignKeyConstraint baseColumnNames="type_degat_id" baseTableName="attaque" constraintName="FKbl2bjtjx2u3dwdabpmx9rl55" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="type_degat"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-49">
+        <addForeignKeyConstraint baseColumnNames="chercheur_id" baseTableName="insecte_utile" constraintName="FKc2lhjefm3n34dmii6ra7c8tao" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="chercheur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-50">
+        <addForeignKeyConstraint baseColumnNames="famille_id" baseTableName="insecte_utile" constraintName="FKd5jd0m1m8o7wqd9nf5i4o47o5" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="famille"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-51">
+        <addForeignKeyConstraint baseColumnNames="herbe_id" baseTableName="methode_lutte" constraintName="FKea0e8kkq1eivqk031x6bikfi1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="herbe"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-52">
+        <addForeignKeyConstraint baseColumnNames="culture_id" baseTableName="culture_cultures_ravageur" constraintName="FKg8s0wtutg9fra9kad0d1pakx1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="culture"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-53">
+        <addForeignKeyConstraint baseColumnNames="famille_id" baseTableName="insecte_ravageur" constraintName="FKhq2kxt9mghll4f3d8wc9fwxm5" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="famille"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-54">
+        <addForeignKeyConstraint baseColumnNames="culture_id" baseTableName="culture_culture_insecte_utile" constraintName="FKk6yrqarfujnj68f97dk5j3bqx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="culture"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-55">
+        <addForeignKeyConstraint baseColumnNames="maladie_id" baseTableName="methode_lutte" constraintName="FKlrxsv728qlgspo3se83dxlk85" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="maladie"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-56">
+        <addForeignKeyConstraint baseColumnNames="culture_id" baseTableName="attaque" constraintName="FKlss5bj077n3pebaaijb6ldjss" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="culture"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-57">
+        <addForeignKeyConstraint baseColumnNames="cultures_ravageur_id" baseTableName="culture_cultures_ravageur" constraintName="FKlysbbivj0hebig720gwx2a5a" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="insecte_ravageur"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-58">
+        <addForeignKeyConstraint baseColumnNames="ordre_id" baseTableName="famille" constraintName="FKo8pd8daxlyqk2h2i617lqecq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ordre"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-59">
+        <addForeignKeyConstraint baseColumnNames="culture_id" baseTableName="culture_culture_herbe" constraintName="FKok2y2brhredghp98su689bvb2" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="culture"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-60">
+        <addForeignKeyConstraint baseColumnNames="culture_insecte_utile_id" baseTableName="culture_culture_insecte_utile" constraintName="FKplso1vo56yei1waiulyabvboe" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="insecte_utile"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-61">
+        <addForeignKeyConstraint baseColumnNames="culture_maladie_id" baseTableName="culture_culture_maladie" constraintName="FKs9d2unmq294hyw0xi7v3iqp1t" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="maladie"/>
+    </changeSet>
+    <changeSet author="mzbf (generated)" id="1553872618416-62">
+        <addForeignKeyConstraint baseColumnNames="chercheur_id" baseTableName="attaque" constraintName="FKsesumia74jp63khkly158pfrl" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="chercheur"/>
+    </changeSet>
+</databaseChangeLog>

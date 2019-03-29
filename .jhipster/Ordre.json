@@ -1,10 +1,31 @@
 {
     "name": "Ordre",
-    "fields": [],
-    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nomOrdre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imageOrdre",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "ordre",
+            "otherEntityName": "famille",
+            "otherEntityRelationshipName": "ordre"
+        }
+    ],
     "changelogDate": "20190216191719",
     "entityTableName": "ordre",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

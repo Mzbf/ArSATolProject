@@ -1,113 +1,154 @@
-entity Insecte {
-
+entity InsecteUtile {
 	nomInsecte String required,
     nomScienInsecte String required,
-	insecteImage Blob,
+	insecteImage String,
 	description TextBlob,
     cycleBio TextBlob,
 	autrePlante TextBlob,
-	imageCycle Blob,
+	imageCycle String,
 	dateValidation Instant,
     dateAjout Instant
-    
+}
+entity InsecteRavageur {
+	nomInsecte String required,
+    nomScienInsecte String required,
+	insecteImage String,
+	description TextBlob,
+    cycleBio TextBlob,
+	autrePlante TextBlob,
+	imageCycle String,
+	dateValidation Instant,
+    dateAjout Instant
+}
+entity Maladie{
+	nomMaladie String,
+    description TextBlob,
+    imagesMaladie String
+}
+entity Herbe{
+	nomHerbe String,
+    description TextBlob,
+    imagesHerbe String
+}
+entity Culture {
+	nomCulture String required,
+	imageCulture String,
+	paysCulture String
 }
 entity Attaque {
-    
-	localisation Localisation required,
-    description TextBlob ,
+
+    description TextBlob,
     flag Boolean,
-    typeDegat TypeDegat required,
+    localisation Localisation
 	dateValidation Instant,
-    dateAjout Instant
+    dateAjout Instant,
+	imagesAttaque String
 }
 entity MethodeLutte{
+	type String,
 	methodeCulturale TextBlob,
-	traitement TextBlob
+	traitement TextBlob,
+    imageML String
 }
 
-entity Culture {
-	nomCulture String required
-}
-entity ImageAttaque {
-
+entity ImageEnvoye {
 urlImage String,
-image Blob,
 dateDAjout Instant,
 dateValidation Instant,
 flag Boolean
     
 }
-entity Role{
-	nomRole String
-}
 entity Agriculteur{
-
-	localistion String
-
+	pays String
 }
 entity Chercheur{
-	institut String
-
-}
-entity Administrateur{
-	
-}
-
-entity SuperFamille{
-
+	institut String,
+    pays String,
+    specialite String
 }
 entity Famille{
+	nomFamille String,
+	description TextBlob,
+	imageFamiile String
 
 }
 entity Ordre{
-
+	nomOrdre String,
+	description TextBlob,
+	imageOrdre String
 }
 
-enum TypeDegat {
-    TACHE,
-    GALERIE,
-    DEFORMATION,
-    NECROSE
+entity TypeDegat {
+    
+	typeDeg String required
 }
 enum Localisation {
-    FEUILLES,
+	FEUILLES,
     FRUITS,
     FLEURES,
-    TIGE
+    TIGE,
+    RACINE
+}
+relationship ManyToMany{
+	Culture{cultureMaladie} to Maladie{culture}
+}
+relationship ManyToMany{
+	Culture{cultureInsecteUtile} to InsecteUtile{culture}
+}
+relationship ManyToMany{
+	Culture{culturesRavageur} to InsecteRavageur{culture}
+}
+relationship ManyToMany{
+	Culture{cultureHerbe} to Herbe{culture}
 }
 
+relationship  OneToOne{
+	InsecteRavageur{ravageurML} to MethodeLutte
+
+}
+relationship OneToOne{
+		Herbe{herbeML} to MethodeLutte
+}
+relationship OneToOne{
+	Maladie{maladieML} to MethodeLutte
+}
 relationship OneToMany {
-	Insecte{attaque} to Attaque
+	InsecteRavageur{ravageur} to Attaque
 }
 relationship OneToMany {
 	Culture{attaque} to Attaque
 }
-
 relationship OneToMany {
-	Chercheur{ajoutInsecte} to Insecte
+	Chercheur{ajoutRavageur} to InsecteRavageur
 }
 relationship OneToMany {
+	Chercheur{ajoutInsUtile} to InsecteUtile
+}
+relationship OneToMany{
 	Chercheur{ajoutAttaque} to Attaque
 }
 relationship OneToMany{
-	Administrateur{adminAjoutInsecte} to Insecte
+	Agriculteur{agriculteur} to ImageEnvoye
 }
-relationship OneToMany {
-	 Administrateur{adminAjoutAttaque} to Attaque
+relationship OneToMany{
+		Ordre{ordre} to Famille
 }
-relationship OneToOne {
-	Insecte{methode} to MethodeLutte
+relationship OneToMany{
+	Famille{familleRavageur} to InsecteRavageur
+    Famille{familleInseUtile} to InsecteUtile
 }
-relationship OneToMany {
-	Attaque{imageAttaque} to ImageAttaque
+relationship OneToMany{
+	TypeDegat{degat} to Attaque
 }
-relationship OneToMany {
-	Insecte{imageInsecte} to ImageAttaque
+relationship OneToMany{
+	Agriculteur{agriculteur} to ImageEnvoye
 }
-relationship OneToMany {
-	Agriculteur{imageSend} to ImageAttaque
+relationship OneToOne{
+	Agriculteur{user} to User
+}
+relationship OneToOne{
+	Chercheur{user} to User
 }
 
-
-
-service all with serviceImpl except User, Administrateur 
+dto * with mapstruct 
+service all with serviceImpl 

@@ -2,21 +2,29 @@
     "name": "Agriculteur",
     "fields": [
         {
-            "fieldName": "localistion",
+            "fieldName": "pays",
             "fieldType": "String"
         }
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "agriculteur"
+        },
+        {
             "relationshipType": "one-to-many",
-            "relationshipName": "imageSend",
-            "otherEntityName": "imageAttaque",
+            "relationshipName": "agriculteur",
+            "otherEntityName": "imageEnvoye",
             "otherEntityRelationshipName": "agriculteur"
         }
     ],
     "changelogDate": "20190216191712",
     "entityTableName": "agriculteur",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

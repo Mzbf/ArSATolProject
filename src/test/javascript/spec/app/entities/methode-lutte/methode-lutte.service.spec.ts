@@ -21,7 +21,7 @@ describe('Service Tests', () => {
             service = injector.get(MethodeLutteService);
             httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new MethodeLutte(0, 'AAAAAAA', 'AAAAAAA');
+            elemDefault = new MethodeLutte(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
@@ -55,8 +55,10 @@ describe('Service Tests', () => {
             it('should update a MethodeLutte', async () => {
                 const returnedFromService = Object.assign(
                     {
+                        type: 'BBBBBB',
                         methodeCulturale: 'BBBBBB',
-                        traitement: 'BBBBBB'
+                        traitement: 'BBBBBB',
+                        imageML: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -73,8 +75,10 @@ describe('Service Tests', () => {
             it('should return a list of MethodeLutte', async () => {
                 const returnedFromService = Object.assign(
                     {
+                        type: 'BBBBBB',
                         methodeCulturale: 'BBBBBB',
-                        traitement: 'BBBBBB'
+                        traitement: 'BBBBBB',
+                        imageML: 'BBBBBB'
                     },
                     elemDefault
                 );

@@ -2,6 +2,10 @@
     "name": "MethodeLutte",
     "fields": [
         {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "methodeCulturale",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
@@ -10,12 +14,16 @@
             "fieldName": "traitement",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imageML",
+            "fieldType": "String"
         }
     ],
     "relationships": [],
     "changelogDate": "20190216191706",
     "entityTableName": "methode_lutte",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

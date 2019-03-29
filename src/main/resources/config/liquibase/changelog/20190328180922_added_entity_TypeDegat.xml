@@ -15,27 +15,15 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Famille.
+        Added the entity TypeDegat.
     -->
-    <changeSet id="20190216191718-1" author="jhipster">
-        <createTable tableName="famille">
+    <changeSet id="20190328180922-1" author="jhipster">
+        <createTable tableName="type_degat">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="nom_famille" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="description" type="clob">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="image_famiile" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="ordre_id" type="bigint">
-                <constraints nullable="true" />
+            <column name="type_deg" type="varchar(255)">
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

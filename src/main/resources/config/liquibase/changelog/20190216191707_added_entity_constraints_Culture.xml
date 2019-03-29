@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Culture.
+    -->
+    <changeSet id="20190216191707-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="culture_id"
+                                 baseTableName="culture_culture_maladie"
+                                 constraintName="fk_culture_culture_maladie_culture_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="culture"/>
+        <addForeignKeyConstraint baseColumnNames="culture_maladie_id"
+                                 baseTableName="culture_culture_maladie"
+                                 constraintName="fk_culture_culture_maladie_culture_maladie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="maladie"/>
+        
+        <addForeignKeyConstraint baseColumnNames="culture_id"
+                                 baseTableName="culture_culture_insecte_utile"
+                                 constraintName="fk_culture_culture_insecte_utile_culture_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="culture"/>
+        <addForeignKeyConstraint baseColumnNames="culture_insecte_utile_id"
+                                 baseTableName="culture_culture_insecte_utile"
+                                 constraintName="fk_culture_culture_insecte_utile_culture_insecte_utile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="insecte_utile"/>
+        
+        <addForeignKeyConstraint baseColumnNames="culture_id"
+                                 baseTableName="culture_cultures_ravageur"
+                                 constraintName="fk_culture_cultures_ravageur_culture_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="culture"/>
+        <addForeignKeyConstraint baseColumnNames="cultures_ravageur_id"
+                                 baseTableName="culture_cultures_ravageur"
+                                 constraintName="fk_culture_cultures_ravageur_cultures_ravageur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="insecte_ravageur"/>
+        
+        <addForeignKeyConstraint baseColumnNames="culture_id"
+                                 baseTableName="culture_culture_herbe"
+                                 constraintName="fk_culture_culture_herbe_culture_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="culture"/>
+        <addForeignKeyConstraint baseColumnNames="culture_herbe_id"
+                                 baseTableName="culture_culture_herbe"
+                                 constraintName="fk_culture_culture_herbe_culture_herbe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="herbe"/>
+        
+    </changeSet>
+</databaseChangeLog>
