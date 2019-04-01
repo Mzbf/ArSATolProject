@@ -23,6 +23,11 @@
     <include file="config/liquibase/changelog/20190328180913_added_entity_Herbe.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190328180917_added_entity_ImageEnvoye.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190328180922_added_entity_TypeDegat.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191704_added_entity_Insecte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190401173431_added_entity_TypeInsecte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190401173437_added_entity_TypeCulture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190401173438_added_entity_ZoneGeo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190401173446_added_entity_Demo.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 
     <include file="config/liquibase/changelog/20190328180910_added_entity_constraints_InsecteUtile.xml" relativeToChangelogFile="false"/>
@@ -36,5 +41,6 @@
     <include file="config/liquibase/changelog/20190328180912_added_entity_constraints_Maladie.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190328180913_added_entity_constraints_Herbe.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191705_added_entity_constraints_Attaque.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191704_added_entity_constraints_Insecte.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

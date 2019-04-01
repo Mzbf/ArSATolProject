@@ -1,4 +1,5 @@
-entity InsecteUtile {
+entity Insecte {
+	
 	nomInsecte String required,
     nomScienInsecte String required,
 	insecteImage String,
@@ -8,18 +9,20 @@ entity InsecteUtile {
 	imageCycle String,
 	dateValidation Instant,
     dateAjout Instant
+}
+
+entity TypeInsecte{
+	nomTypeInsecte String,
+	description String
+}
+
+ entity InsecteUtile {
+	
 }
 entity InsecteRavageur {
-	nomInsecte String required,
-    nomScienInsecte String required,
-	insecteImage String,
-	description TextBlob,
-    cycleBio TextBlob,
-	autrePlante TextBlob,
-	imageCycle String,
-	dateValidation Instant,
-    dateAjout Instant
-}
+	
+} 
+
 entity Maladie{
 	nomMaladie String,
     description TextBlob,
@@ -35,6 +38,14 @@ entity Culture {
 	imageCulture String,
 	paysCulture String
 }
+entity TypeCulture{
+	nomTypeCulture String,
+	description String
+}
+entity ZoneGeo{
+	pays String,
+	region String
+}
 entity Attaque {
 
     description TextBlob,
@@ -48,7 +59,8 @@ entity MethodeLutte{
 	type String,
 	methodeCulturale TextBlob,
 	traitement TextBlob,
-    imageML String
+    imageML String,
+    video String
 }
 
 entity ImageEnvoye {
@@ -59,7 +71,7 @@ flag Boolean
     
 }
 entity Agriculteur{
-	pays String
+	specialite String
 }
 entity Chercheur{
 	institut String,
@@ -76,6 +88,11 @@ entity Ordre{
 	nomOrdre String,
 	description TextBlob,
 	imageOrdre String
+}
+entity Demo{
+	imageDemo String,
+    audio String,
+    videoDemo String
 }
 
 entity TypeDegat {
@@ -101,7 +118,24 @@ relationship ManyToMany{
 relationship ManyToMany{
 	Culture{cultureHerbe} to Herbe{culture}
 }
-
+relationship OneToOne{
+	Culture{typeCulture} to TypeCulture
+}
+relationship ManyToMany{
+	Culture{zone} to ZoneGeo{culture}
+}
+relationship OneToOne{
+	Insecte{typeInsecte} to TypeInsecte
+}
+relationship  OneToOne{
+	InsecteRavageur{typeRav} to Insecte
+}
+relationship  OneToOne{
+	InsecteUtile{typeUtil} to Insecte
+}
+relationship OneToOne{
+	Agriculteur{pays} to ZoneGeo
+}
 relationship  OneToOne{
 	InsecteRavageur{ravageurML} to MethodeLutte
 
@@ -126,9 +160,6 @@ relationship OneToMany {
 }
 relationship OneToMany{
 	Chercheur{ajoutAttaque} to Attaque
-}
-relationship OneToMany{
-	Agriculteur{agriculteur} to ImageEnvoye
 }
 relationship OneToMany{
 		Ordre{ordre} to Famille

@@ -21,43 +21,9 @@
         <createTable tableName="insecte_ravageur">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="nom_insecte" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="nom_scien_insecte" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="insecte_image" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="description" type="clob">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="cycle_bio" type="clob">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="autre_plante" type="clob">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="image_cycle" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="date_validation" type="datetime">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="date_ajout" type="datetime">
-                <constraints nullable="true" />
-            </column>
-            <column name="ravageurml_id" type="bigint">
+            </column>            <column name="type_rav_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_insecte_ravageur_type_rav_id" />
+            </column>            <column name="ravageurml_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_insecte_ravageur_ravageurml_id" />
             </column>
             <column name="chercheur_id" type="bigint">
@@ -70,8 +36,6 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <dropDefaultValue tableName="insecte_ravageur" columnName="date_validation" columnDataType="datetime"/>
-        <dropDefaultValue tableName="insecte_ravageur" columnName="date_ajout" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

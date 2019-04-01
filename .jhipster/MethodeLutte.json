@@ -18,6 +18,10 @@
         {
             "fieldName": "imageML",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "video",
+            "fieldType": "String"
         }
     ],
     "relationships": [],

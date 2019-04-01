@@ -71,6 +71,13 @@ public class CacheConfiguration {
             cm.createCache(com.arsatoll.app.domain.Ordre.class.getName() + ".ordres", jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.TypeDegat.class.getName(), jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.TypeDegat.class.getName() + ".degats", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Insecte.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.TypeInsecte.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Culture.class.getName() + ".zones", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.TypeCulture.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.ZoneGeo.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.ZoneGeo.class.getName() + ".cultures", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Demo.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

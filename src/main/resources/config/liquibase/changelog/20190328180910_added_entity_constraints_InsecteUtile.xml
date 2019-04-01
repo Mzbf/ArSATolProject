@@ -8,6 +8,12 @@
     -->
     <changeSet id="20190328180910-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="type_util_id"
+                                 baseTableName="insecte_utile"
+                                 constraintName="fk_insecte_utile_type_util_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="insecte"/>
+
         <addForeignKeyConstraint baseColumnNames="chercheur_id"
                                  baseTableName="insecte_utile"
                                  constraintName="fk_insecte_utile_chercheur_id"

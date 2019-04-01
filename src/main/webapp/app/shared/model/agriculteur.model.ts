@@ -2,11 +2,18 @@ import { IImageEnvoye } from 'app/shared/model/image-envoye.model';
 
 export interface IAgriculteur {
     id?: number;
-    pays?: string;
+    specialite?: string;
+    paysId?: number;
     userId?: number;
     agriculteurs?: IImageEnvoye[];
 }
 
 export class Agriculteur implements IAgriculteur {
-    constructor(public id?: number, public pays?: string, public userId?: number, public agriculteurs?: IImageEnvoye[]) {}
+    constructor(
+        public id?: number,
+        public specialite?: string,
+        public paysId?: number,
+        public userId?: number,
+        public agriculteurs?: IImageEnvoye[]
+    ) {}
 }

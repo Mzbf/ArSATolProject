@@ -8,6 +8,12 @@
     -->
     <changeSet id="20190216191707-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="type_culture_id"
+                                 baseTableName="culture"
+                                 constraintName="fk_culture_type_culture_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_culture"/>
+
         <addForeignKeyConstraint baseColumnNames="culture_id"
                                  baseTableName="culture_culture_maladie"
                                  constraintName="fk_culture_culture_maladie_culture_id"
@@ -51,6 +57,17 @@
                                  constraintName="fk_culture_culture_herbe_culture_herbe_id"
                                  referencedColumnNames="id"
                                  referencedTableName="herbe"/>
+        
+        <addForeignKeyConstraint baseColumnNames="culture_id"
+                                 baseTableName="culture_zone"
+                                 constraintName="fk_culture_zone_culture_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="culture"/>
+        <addForeignKeyConstraint baseColumnNames="zone_id"
+                                 baseTableName="culture_zone"
+                                 constraintName="fk_culture_zone_zone_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zone_geo"/>
         
     </changeSet>
 </databaseChangeLog>

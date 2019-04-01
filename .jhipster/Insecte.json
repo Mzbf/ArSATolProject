@@ -17,8 +17,7 @@
         },
         {
             "fieldName": "insecteImage",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
+            "fieldType": "String"
         },
         {
             "fieldName": "description",
@@ -37,8 +36,7 @@
         },
         {
             "fieldName": "imageCycle",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
+            "fieldType": "String"
         },
         {
             "fieldName": "dateValidation",
@@ -52,40 +50,16 @@
     "relationships": [
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "methode",
-            "otherEntityName": "methodeLutte",
+            "relationshipName": "typeInsecte",
+            "otherEntityName": "typeInsecte",
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "insecte"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "attaque",
-            "otherEntityName": "attaque",
-            "otherEntityRelationshipName": "insecte"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "imageInsecte",
-            "otherEntityName": "imageAttaque",
-            "otherEntityRelationshipName": "insecte"
-        },
-        {
-            "relationshipName": "chercheur",
-            "otherEntityName": "chercheur",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "administrateur",
-            "otherEntityName": "administrateur",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190216191704",
     "entityTableName": "insecte",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

@@ -8,6 +8,12 @@
     -->
     <changeSet id="20190216191712-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="pays_id"
+                                 baseTableName="agriculteur"
+                                 constraintName="fk_agriculteur_pays_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zone_geo"/>
+
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="agriculteur"
                                  constraintName="fk_agriculteur_user_id"

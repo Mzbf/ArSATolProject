@@ -33,7 +33,9 @@
             <column name="pays_culture" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            <column name="type_culture_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_culture_type_culture_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
@@ -80,6 +82,17 @@
         </createTable>
 
         <addPrimaryKey columnNames="culture_id, culture_herbe_id" tableName="culture_culture_herbe"/>
+        
+        <createTable tableName="culture_zone">
+            <column name="zone_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="culture_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="culture_id, zone_id" tableName="culture_zone"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

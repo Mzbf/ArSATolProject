@@ -8,6 +8,12 @@
     -->
     <changeSet id="20190328180911-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="type_rav_id"
+                                 baseTableName="insecte_ravageur"
+                                 constraintName="fk_insecte_ravageur_type_rav_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="insecte"/>
+
         <addForeignKeyConstraint baseColumnNames="ravageurml_id"
                                  baseTableName="insecte_ravageur"
                                  constraintName="fk_insecte_ravageur_ravageurml_id"

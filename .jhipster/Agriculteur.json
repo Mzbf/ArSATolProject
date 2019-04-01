@@ -2,11 +2,19 @@
     "name": "Agriculteur",
     "fields": [
         {
-            "fieldName": "pays",
+            "fieldName": "specialite",
             "fieldType": "String"
         }
     ],
     "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "pays",
+            "otherEntityName": "zoneGeo",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "agriculteur"
+        },
         {
             "relationshipType": "one-to-one",
             "relationshipName": "user",

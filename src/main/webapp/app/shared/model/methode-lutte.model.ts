@@ -4,6 +4,7 @@ export interface IMethodeLutte {
     methodeCulturale?: any;
     traitement?: any;
     imageML?: string;
+    video?: string;
 }
 
 export class MethodeLutte implements IMethodeLutte {
@@ -12,6 +13,7 @@ export class MethodeLutte implements IMethodeLutte {
         public type?: string,
         public methodeCulturale?: any,
         public traitement?: any,
-        public imageML?: string
+        public imageML?: string,
+        public video?: string
     ) {}
 }

@@ -19,6 +19,14 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "relationshipName": "typeCulture",
+            "otherEntityName": "typeCulture",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "culture"
+        },
+        {
             "relationshipType": "one-to-many",
             "relationshipName": "attaque",
             "otherEntityName": "attaque",
@@ -53,6 +61,14 @@
             "otherEntityRelationshipName": "culture",
             "relationshipName": "cultureHerbe",
             "otherEntityName": "herbe",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "culture",
+            "relationshipName": "zone",
+            "otherEntityName": "zoneGeo",
             "otherEntityField": "id",
             "ownerSide": true
         }

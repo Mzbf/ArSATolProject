@@ -21,7 +21,7 @@ describe('Service Tests', () => {
             service = injector.get(MethodeLutteService);
             httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new MethodeLutte(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+            elemDefault = new MethodeLutte(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
@@ -58,7 +58,8 @@ describe('Service Tests', () => {
                         type: 'BBBBBB',
                         methodeCulturale: 'BBBBBB',
                         traitement: 'BBBBBB',
-                        imageML: 'BBBBBB'
+                        imageML: 'BBBBBB',
+                        video: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -78,7 +79,8 @@ describe('Service Tests', () => {
                         type: 'BBBBBB',
                         methodeCulturale: 'BBBBBB',
                         traitement: 'BBBBBB',
-                        imageML: 'BBBBBB'
+                        imageML: 'BBBBBB',
+                        video: 'BBBBBB'
                     },
                     elemDefault
                 );
