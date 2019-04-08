@@ -2,37 +2,23 @@
     "name": "ImageInsecte",
     "fields": [
         {
-            "fieldName": "dateDAjout",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "dateValidation",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "flag",
-            "fieldType": "Boolean"
+            "fieldName": "imageUrl",
+            "fieldType": "String"
         }
     ],
     "relationships": [
         {
-            "relationshipName": "image",
-            "otherEntityName": "image",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "agriculteur",
-            "otherEntityName": "agriculteur",
+            "relationshipName": "insecte",
+            "otherEntityName": "insecte",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190216191709",
     "entityTableName": "image_insecte",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
-    "service": "no",
+    "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",

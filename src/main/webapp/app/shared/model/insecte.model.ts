@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IImageInsecte } from 'app/shared/model/image-insecte.model';
 
 export interface IInsecte {
     id?: number;
@@ -12,6 +13,7 @@ export interface IInsecte {
     dateValidation?: Moment;
     dateAjout?: Moment;
     typeInsecteId?: number;
+    insectes?: IImageInsecte[];
 }
 
 export class Insecte implements IInsecte {
@@ -26,6 +28,7 @@ export class Insecte implements IInsecte {
         public imageCycle?: string,
         public dateValidation?: Moment,
         public dateAjout?: Moment,
-        public typeInsecteId?: number
+        public typeInsecteId?: number,
+        public insectes?: IImageInsecte[]
     ) {}
 }

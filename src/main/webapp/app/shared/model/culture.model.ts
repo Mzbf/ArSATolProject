@@ -1,3 +1,4 @@
+import { IImageCulture } from 'app/shared/model/image-culture.model';
 import { IAttaque } from 'app/shared/model/attaque.model';
 import { IMaladie } from 'app/shared/model/maladie.model';
 import { IInsecteUtile } from 'app/shared/model/insecte-utile.model';
@@ -11,6 +12,7 @@ export interface ICulture {
     imageCulture?: string;
     paysCulture?: string;
     typeCultureId?: number;
+    cultures?: IImageCulture[];
     attaques?: IAttaque[];
     cultureMaladies?: IMaladie[];
     cultureInsecteUtiles?: IInsecteUtile[];
@@ -26,6 +28,7 @@ export class Culture implements ICulture {
         public imageCulture?: string,
         public paysCulture?: string,
         public typeCultureId?: number,
+        public cultures?: IImageCulture[],
         public attaques?: IAttaque[],
         public cultureMaladies?: IMaladie[],
         public cultureInsecteUtiles?: IInsecteUtile[],

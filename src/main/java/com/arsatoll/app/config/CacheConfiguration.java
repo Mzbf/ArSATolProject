@@ -78,6 +78,17 @@ public class CacheConfiguration {
             cm.createCache(com.arsatoll.app.domain.ZoneGeo.class.getName(), jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.ZoneGeo.class.getName() + ".cultures", jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.Demo.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Image.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Insecte.class.getName() + ".insectes", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Maladie.class.getName() + ".maladies", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Herbe.class.getName() + ".herbes", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Culture.class.getName() + ".cultures", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Attaque.class.getName() + ".attaques", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.ImageCulture.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.ImageInsecte.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.ImageAttaque.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.ImageMaladie.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.ImageHerbe.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

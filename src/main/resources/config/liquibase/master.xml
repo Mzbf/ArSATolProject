@@ -28,6 +28,12 @@
     <include file="config/liquibase/changelog/20190401173437_added_entity_TypeCulture.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190401173438_added_entity_ZoneGeo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190401173446_added_entity_Demo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191708_added_entity_Image.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402184206_added_entity_ImageCulture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191709_added_entity_ImageInsecte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190316030442_added_entity_ImageAttaque.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402184209_added_entity_ImageMaladie.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402184210_added_entity_ImageHerbe.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 
     <include file="config/liquibase/changelog/20190328180910_added_entity_constraints_InsecteUtile.xml" relativeToChangelogFile="false"/>
@@ -42,5 +48,10 @@
     <include file="config/liquibase/changelog/20190328180913_added_entity_constraints_Herbe.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191705_added_entity_constraints_Attaque.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191704_added_entity_constraints_Insecte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402184206_added_entity_constraints_ImageCulture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190216191709_added_entity_constraints_ImageInsecte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190316030442_added_entity_constraints_ImageAttaque.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402184209_added_entity_constraints_ImageMaladie.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190402184210_added_entity_constraints_ImageHerbe.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

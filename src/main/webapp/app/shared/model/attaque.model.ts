@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IImageAttaque } from 'app/shared/model/image-attaque.model';
 
 export const enum Localisation {
     FEUILLES = 'FEUILLES',
@@ -18,6 +19,7 @@ export interface IAttaque {
     imagesAttaque?: string;
     insecteRavageurId?: number;
     cultureId?: number;
+    attaques?: IImageAttaque[];
     chercheurId?: number;
     typeDegatId?: number;
 }
@@ -33,6 +35,7 @@ export class Attaque implements IAttaque {
         public imagesAttaque?: string,
         public insecteRavageurId?: number,
         public cultureId?: number,
+        public attaques?: IImageAttaque[],
         public chercheurId?: number,
         public typeDegatId?: number
     ) {

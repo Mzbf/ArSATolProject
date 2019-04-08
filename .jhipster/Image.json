@@ -2,50 +2,14 @@
     "name": "Image",
     "fields": [
         {
-            "fieldName": "urlImage",
+            "fieldName": "imageUrl",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "image",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
-        },
-        {
-            "fieldName": "dateDAjout",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "dateValidation",
-            "fieldType": "Instant"
-        },
-        {
-            "fieldName": "flag",
-            "fieldType": "Boolean"
         }
     ],
-    "relationships": [
-        {
-            "relationshipName": "insecte",
-            "otherEntityName": "insecte",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "attaque",
-            "otherEntityName": "attaque",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "agriculteur",
-            "otherEntityName": "agriculteur",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20190216191708",
     "entityTableName": "image",
-    "dto": "no",
+    "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,

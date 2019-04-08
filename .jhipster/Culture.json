@@ -28,6 +28,12 @@
         },
         {
             "relationshipType": "one-to-many",
+            "relationshipName": "culture",
+            "otherEntityName": "imageCulture",
+            "otherEntityRelationshipName": "culture"
+        },
+        {
+            "relationshipType": "one-to-many",
             "relationshipName": "attaque",
             "otherEntityName": "attaque",
             "otherEntityRelationshipName": "culture"
