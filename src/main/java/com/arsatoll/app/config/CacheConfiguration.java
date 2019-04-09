@@ -40,11 +40,6 @@ public class CacheConfiguration {
             cm.createCache(com.arsatoll.app.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.User.class.getName() + ".authorities", jcacheConfiguration);
 
-            cm.createCache(com.arsatoll.app.domain.InsecteUtile.class.getName(), jcacheConfiguration);
-            cm.createCache(com.arsatoll.app.domain.InsecteUtile.class.getName() + ".cultures", jcacheConfiguration);
-            cm.createCache(com.arsatoll.app.domain.InsecteRavageur.class.getName(), jcacheConfiguration);
-            cm.createCache(com.arsatoll.app.domain.InsecteRavageur.class.getName() + ".ravageurs", jcacheConfiguration);
-            cm.createCache(com.arsatoll.app.domain.InsecteRavageur.class.getName() + ".cultures", jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.Maladie.class.getName(), jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.Maladie.class.getName() + ".cultures", jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.Herbe.class.getName(), jcacheConfiguration);
@@ -89,6 +84,11 @@ public class CacheConfiguration {
             cm.createCache(com.arsatoll.app.domain.ImageAttaque.class.getName(), jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.ImageMaladie.class.getName(), jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.ImageHerbe.class.getName(), jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Culture.class.getName() + ".imagecultures", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Culture.class.getName() + ".listattaques", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Culture.class.getName() + ".maladies", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Culture.class.getName() + ".herbes", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.Insecte.class.getName() + ".listattaques", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

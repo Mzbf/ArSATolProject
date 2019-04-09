@@ -17,18 +17,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "relationshipName": "familleRavageur",
-            "otherEntityName": "insecteRavageur",
-            "otherEntityRelationshipName": "famille"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "familleInseUtile",
-            "otherEntityName": "insecteUtile",
-            "otherEntityRelationshipName": "famille"
-        },
-        {
             "relationshipName": "ordre",
             "otherEntityName": "ordre",
             "relationshipType": "many-to-one",

@@ -46,7 +46,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="insecte_ravageur_id" type="bigint">
+            <column name="insecte_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

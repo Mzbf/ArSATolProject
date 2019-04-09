@@ -17,7 +17,7 @@ export interface IAttaque {
     dateValidation?: Moment;
     dateAjout?: Moment;
     imagesAttaque?: string;
-    insecteRavageurId?: number;
+    insecteId?: number;
     cultureId?: number;
     attaques?: IImageAttaque[];
     chercheurId?: number;
@@ -33,7 +33,7 @@ export class Attaque implements IAttaque {
         public dateValidation?: Moment,
         public dateAjout?: Moment,
         public imagesAttaque?: string,
-        public insecteRavageurId?: number,
+        public insecteId?: number,
         public cultureId?: number,
         public attaques?: IImageAttaque[],
         public chercheurId?: number,

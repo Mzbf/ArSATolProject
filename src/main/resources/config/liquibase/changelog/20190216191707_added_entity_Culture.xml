@@ -29,18 +29,14 @@
             <column name="image_culture" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
-            <column name="pays_culture" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="type_culture_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_culture_type_culture_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
-        <createTable tableName="culture_culture_maladie">
-            <column name="culture_maladie_id" type="bigint">
+        <createTable tableName="culture_maladie">
+            <column name="maladie_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="culture_id" type="bigint">
@@ -48,10 +44,10 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="culture_id, culture_maladie_id" tableName="culture_culture_maladie"/>
+        <addPrimaryKey columnNames="culture_id, maladie_id" tableName="culture_maladie"/>
         
-        <createTable tableName="culture_culture_insecte_utile">
-            <column name="culture_insecte_utile_id" type="bigint">
+        <createTable tableName="culture_herbe">
+            <column name="herbe_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="culture_id" type="bigint">
@@ -59,29 +55,7 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="culture_id, culture_insecte_utile_id" tableName="culture_culture_insecte_utile"/>
-        
-        <createTable tableName="culture_cultures_ravageur">
-            <column name="cultures_ravageur_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="culture_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="culture_id, cultures_ravageur_id" tableName="culture_cultures_ravageur"/>
-        
-        <createTable tableName="culture_culture_herbe">
-            <column name="culture_herbe_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="culture_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="culture_id, culture_herbe_id" tableName="culture_culture_herbe"/>
+        <addPrimaryKey columnNames="culture_id, herbe_id" tableName="culture_herbe"/>
         
         <createTable tableName="culture_zone">
             <column name="zone_id" type="bigint">

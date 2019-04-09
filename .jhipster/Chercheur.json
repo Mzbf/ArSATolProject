@@ -25,18 +25,6 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "ajoutRavageur",
-            "otherEntityName": "insecteRavageur",
-            "otherEntityRelationshipName": "chercheur"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "ajoutInsUtile",
-            "otherEntityName": "insecteUtile",
-            "otherEntityRelationshipName": "chercheur"
-        },
-        {
-            "relationshipType": "one-to-many",
             "relationshipName": "ajoutAttaque",
             "otherEntityName": "attaque",
             "otherEntityRelationshipName": "chercheur"

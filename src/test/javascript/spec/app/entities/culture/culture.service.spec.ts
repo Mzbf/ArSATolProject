@@ -21,7 +21,7 @@ describe('Service Tests', () => {
             service = injector.get(CultureService);
             httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new Culture(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+            elemDefault = new Culture(0, 'AAAAAAA', 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
@@ -56,8 +56,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         nomCulture: 'BBBBBB',
-                        imageCulture: 'BBBBBB',
-                        paysCulture: 'BBBBBB'
+                        imageCulture: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -75,8 +74,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         nomCulture: 'BBBBBB',
-                        imageCulture: 'BBBBBB',
-                        paysCulture: 'BBBBBB'
+                        imageCulture: 'BBBBBB'
                     },
                     elemDefault
                 );

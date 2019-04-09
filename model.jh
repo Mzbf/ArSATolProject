@@ -124,7 +124,7 @@ entity Image{
 	 imageUrl String
 }
 relationship ManyToMany{
-	Culture{cultureMaladie} to Maladie{culture}
+	Culture{maladie} to Maladie{culture}
 }
 /* relationship ManyToMany{
 	Culture{cultureInsecteUtile} to InsecteUtile{culture}
@@ -133,7 +133,7 @@ relationship ManyToMany{
 	Culture{culturesRavageur} to InsecteRavageur{culture}
 } */
 relationship ManyToMany{
-	Culture{cultureHerbe} to Herbe{culture}
+	Culture{herbe} to Herbe{culture}
 }
 relationship OneToOne{
 	Culture{typeCulture} to TypeCulture
@@ -145,7 +145,7 @@ relationship OneToMany{
 	Insecte{insecte} to ImageInsecte
 }
 relationship OneToMany{
-	Culture{culture} to ImageCulture
+	Culture{imageculture} to ImageCulture
 }
 relationship OneToMany{
 	Attaque{attaque} to ImageAttaque
@@ -182,7 +182,10 @@ relationship OneToOne{
 	InsecteRavageur{ravageur} to Attaque
 } */
 relationship OneToMany {
-	Culture{attaque} to Attaque
+	Culture{listattaque} to Attaque
+}
+relationship OneToMany {
+	Insecte{listattaque} to Attaque
 }
 /* relationship OneToMany {
 	Chercheur{ajoutRavageur} to InsecteRavageur
@@ -217,4 +220,4 @@ dto * with mapstruct
 service all with serviceImpl 
 
 
-// SELECT nom_insecte, I.description FROM insecte I,attaque A WHERE A.localisation="FEUILLES" and A.culture_id=1 and A.insecte_ravageur_id=I.id 
+// SELECT nom_insecte FROM insecte I,attaque A WHERE A.localisation="FEUILLES" and A.culture_id=1 and A.insecte_id=I.id

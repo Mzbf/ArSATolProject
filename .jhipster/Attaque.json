@@ -30,8 +30,8 @@
     ],
     "relationships": [
         {
-            "relationshipName": "insecteRavageur",
-            "otherEntityName": "insecteRavageur",
+            "relationshipName": "insecte",
+            "otherEntityName": "insecte",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         },

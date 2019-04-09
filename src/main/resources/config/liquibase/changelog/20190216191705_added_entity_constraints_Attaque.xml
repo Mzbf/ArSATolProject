@@ -8,11 +8,11 @@
     -->
     <changeSet id="20190216191705-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="insecte_ravageur_id"
+        <addForeignKeyConstraint baseColumnNames="insecte_id"
                                  baseTableName="attaque"
-                                 constraintName="fk_attaque_insecte_ravageur_id"
+                                 constraintName="fk_attaque_insecte_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="insecte_ravageur"/>
+                                 referencedTableName="insecte"/>
 
         <addForeignKeyConstraint baseColumnNames="culture_id"
                                  baseTableName="attaque"

@@ -11,10 +11,6 @@
         {
             "fieldName": "imageCulture",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "paysCulture",
-            "fieldType": "String"
         }
     ],
     "relationships": [
@@ -28,20 +24,20 @@
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "culture",
+            "relationshipName": "imageculture",
             "otherEntityName": "imageCulture",
             "otherEntityRelationshipName": "culture"
         },
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "attaque",
+            "relationshipName": "listattaque",
             "otherEntityName": "attaque",
             "otherEntityRelationshipName": "culture"
         },
         {
             "relationshipType": "many-to-many",
             "otherEntityRelationshipName": "culture",
-            "relationshipName": "cultureMaladie",
+            "relationshipName": "maladie",
             "otherEntityName": "maladie",
             "otherEntityField": "id",
             "ownerSide": true
@@ -49,23 +45,7 @@
         {
             "relationshipType": "many-to-many",
             "otherEntityRelationshipName": "culture",
-            "relationshipName": "cultureInsecteUtile",
-            "otherEntityName": "insecteUtile",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "culture",
-            "relationshipName": "culturesRavageur",
-            "otherEntityName": "insecteRavageur",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "culture",
-            "relationshipName": "cultureHerbe",
+            "relationshipName": "herbe",
             "otherEntityName": "herbe",
             "otherEntityField": "id",
             "ownerSide": true

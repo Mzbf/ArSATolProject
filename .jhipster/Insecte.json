@@ -61,6 +61,12 @@
             "relationshipName": "insecte",
             "otherEntityName": "imageInsecte",
             "otherEntityRelationshipName": "insecte"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "listattaque",
+            "otherEntityName": "attaque",
+            "otherEntityRelationshipName": "insecte"
         }
     ],
     "changelogDate": "20190216191704",
