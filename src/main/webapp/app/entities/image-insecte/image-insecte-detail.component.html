@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="imageInsecte">
+            <h2><span>Image Insecte</span> {{imageInsecte.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Image Url</span></dt>
+                <dd>
+                    <span>{{imageInsecte.imageUrl}}</span>
+                </dd>
+                <dt><span>Insecte</span></dt>
+                <dd>
+                    <div *ngIf="imageInsecte.insecteId">
+                        <a [routerLink]="['/insecte', imageInsecte.insecteId, 'view']">{{imageInsecte.insecteId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/image-insecte', imageInsecte.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
