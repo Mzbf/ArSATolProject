@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="insecteRavageur">
+            <h2><span>Insecte Ravageur</span> {{insecteRavageur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Type Rav</span></dt>
+                <dd>
+                    <div *ngIf="insecteRavageur.typeRavId">
+                        <a [routerLink]="['/insecte', insecteRavageur.typeRavId, 'view']">{{insecteRavageur.typeRavId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Ravageur ML</span></dt>
+                <dd>
+                    <div *ngIf="insecteRavageur.ravageurMLId">
+                        <a [routerLink]="['/methode-lutte', insecteRavageur.ravageurMLId, 'view']">{{insecteRavageur.ravageurMLId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Chercheur</span></dt>
+                <dd>
+                    <div *ngIf="insecteRavageur.chercheurId">
+                        <a [routerLink]="['/chercheur', insecteRavageur.chercheurId, 'view']">{{insecteRavageur.chercheurId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Famille</span></dt>
+                <dd>
+                    <div *ngIf="insecteRavageur.familleId">
+                        <a [routerLink]="['/famille', insecteRavageur.familleId, 'view']">{{insecteRavageur.familleId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/insecte-ravageur', insecteRavageur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

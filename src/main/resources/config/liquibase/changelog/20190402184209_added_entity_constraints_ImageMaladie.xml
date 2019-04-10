@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ImageMaladie.
+    -->
+    <changeSet id="20190402184209-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="maladie_id"
+                                 baseTableName="image_maladie"
+                                 constraintName="fk_image_maladie_maladie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="maladie"/>
+
+    </changeSet>
+</databaseChangeLog>

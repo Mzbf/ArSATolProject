@@ -1,0 +1,118 @@
+entity Insecte {
+	
+	nomInsecte String required,
+    nomScienInsecte String required,
+	insecteImage String,
+	description TextBlob,
+    cycleBio TextBlob,
+	autrePlante TextBlob,
+	imageCycle String,
+	dateValidation Instant,
+    dateAjout Instant
+}
+
+entity TypeInsecte{
+	nomTypeInsecte String,
+	description String
+}
+
+entity Maladie{
+	nomMaladie String,
+    description TextBlob,
+    imagesMaladie String
+}
+entity Herbe{
+	nomHerbe String,
+    description TextBlob,
+    imagesHerbe String
+}
+entity Culture {
+	nomCulture String required,
+	imageCulture String
+}
+entity TypeCulture{
+	nomTypeCulture String,
+	description String
+}
+entity ZoneGeo{
+	pays String,
+	region String
+}
+entity Attaque {
+
+    description TextBlob,
+    flag Boolean,
+    localisation Localisation
+	dateValidation Instant,
+    dateAjout Instant,
+	imagesAttaque String
+}
+entity MethodeLutte{
+	type String,
+	methodeCulturale TextBlob,
+	traitement TextBlob,
+    imageML String,
+    video String
+}
+
+entity ImageEnvoye {
+urlImage String,
+dateDAjout Instant,
+dateValidation Instant,
+flag Boolean
+    
+}
+entity Agriculteur{
+	specialite String
+}
+entity Chercheur{
+	institut String,
+    pays String,
+    specialite String
+}
+entity Famille{
+	nomFamille String,
+	description TextBlob,
+	imageFamiile String
+
+}
+entity Ordre{
+	nomOrdre String,
+	description TextBlob,
+	imageOrdre String
+}
+entity Demo{
+	imageDemo String,
+    audio String,
+    videoDemo String
+}
+
+entity TypeDegat {
+    
+	typeDeg String required
+}
+enum Localisation {
+	FEUILLES,
+    FRUITS,
+    FLEURES,
+    TIGE,
+    RACINE
+}
+entity ImageCulture{
+	 imageUrl String
+}
+entity ImageInsecte{
+	 imageUrl String
+}
+entity ImageAttaque{
+	 imageUrl String
+}
+entity ImageMaladie{
+	 imageUrl String
+}
+entity ImageHerbe{
+	 imageUrl String
+}
+entity Image{
+	 imageUrl String
+}

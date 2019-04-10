@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="attaque">
+            <h2><span>Attaque</span> {{attaque.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{attaque.description}}</span>
+                </dd>
+                <dt><span>Flag</span></dt>
+                <dd>
+                    <span>{{attaque.flag}}</span>
+                </dd>
+                <dt><span>Localisation</span></dt>
+                <dd>
+                    <span>{{attaque.localisation}}</span>
+                </dd>
+                <dt><span>Date Validation</span></dt>
+                <dd>
+                    <span>{{attaque.dateValidation}}</span>
+                </dd>
+                <dt><span>Date Ajout</span></dt>
+                <dd>
+                    <span>{{attaque.dateAjout}}</span>
+                </dd>
+                <dt><span>Images Attaque</span></dt>
+                <dd>
+                    <span>{{attaque.imagesAttaque}}</span>
+                </dd>
+                <dt><span>Insecte</span></dt>
+                <dd>
+                    <div *ngIf="attaque.insecteId">
+                        <a [routerLink]="['/insecte', attaque.insecteId, 'view']">{{attaque.insecteId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Culture</span></dt>
+                <dd>
+                    <div *ngIf="attaque.cultureId">
+                        <a [routerLink]="['/culture', attaque.cultureId, 'view']">{{attaque.cultureId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Chercheur</span></dt>
+                <dd>
+                    <div *ngIf="attaque.chercheurId">
+                        <a [routerLink]="['/chercheur', attaque.chercheurId, 'view']">{{attaque.chercheurId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Type Degat</span></dt>
+                <dd>
+                    <div *ngIf="attaque.typeDegatId">
+                        <a [routerLink]="['/type-degat', attaque.typeDegatId, 'view']">{{attaque.typeDegatId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/attaque', attaque.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div>
+    <h2 id="page-heading">
+        <span>Type Degats</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-type-degat" [routerLink]="['/type-degat/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Type Degat
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="typeDegats">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Type Deg</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let typeDegat of typeDegats ;trackBy: trackId">
+                <td><a [routerLink]="['/type-degat', typeDegat.id, 'view' ]">{{typeDegat.id}}</a></td>
+                <td>{{typeDegat.typeDeg}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/type-degat', typeDegat.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/type-degat', typeDegat.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'type-degat', { outlets: { popup: typeDegat.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

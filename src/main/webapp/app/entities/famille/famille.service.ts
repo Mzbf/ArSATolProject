@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
-import { Famille, IFamille } from 'app/shared/model/famille.model';
-import { Form } from '@angular/forms';
+import { IFamille } from 'app/shared/model/famille.model';
 
 type EntityResponseType = HttpResponse<IFamille>;
 type EntityArrayResponseType = HttpResponse<IFamille[]>;
@@ -35,8 +34,5 @@ export class FamilleService {
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
-    }
-    saveFamille(formData: FormData): Observable<any> {
-        return this.http.post(SERVER_API_URL + 'api/famillesSave', formData);
     }
 }

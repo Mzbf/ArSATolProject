@@ -1,0 +1,50 @@
+{
+    "name": "Maladie",
+    "fields": [
+        {
+            "fieldName": "nomMaladie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imagesMaladie",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "maladieML",
+            "otherEntityName": "methodeLutte",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "maladie"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "maladie",
+            "otherEntityName": "imageMaladie",
+            "otherEntityRelationshipName": "maladie"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "culture",
+            "otherEntityName": "culture",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "maladie"
+        }
+    ],
+    "changelogDate": "20190328180912",
+    "entityTableName": "maladie",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span>Image Maladies</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-image-maladie" [routerLink]="['/image-maladie/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Image Maladie
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="imageMaladies">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Image Url</span></th>
+            <th><span>Maladie</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let imageMaladie of imageMaladies ;trackBy: trackId">
+                <td><a [routerLink]="['/image-maladie', imageMaladie.id, 'view' ]">{{imageMaladie.id}}</a></td>
+                <td>{{imageMaladie.imageUrl}}</td>
+                <td>
+                    <div *ngIf="imageMaladie.maladieId">
+                        <a [routerLink]="['../maladie', imageMaladie.maladieId , 'view' ]" >{{imageMaladie.maladieId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/image-maladie', imageMaladie.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/image-maladie', imageMaladie.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'image-maladie', { outlets: { popup: imageMaladie.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

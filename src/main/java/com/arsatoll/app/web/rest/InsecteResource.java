@@ -9,12 +9,10 @@ import com.arsatoll.app.service.dto.InsecteDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -106,9 +104,9 @@ public class InsecteResource {
     }
 
     @GetMapping("/ravageur/{id}/{local}")
-    public InsecteDTO findRavageur(@PathVariable Long id,@PathVariable Localisation local) {
+    public Insecte findRavageur(@PathVariable Long id,@PathVariable Localisation local) {
         log.debug("REST request to get Insecte : {}", id);
-        InsecteDTO insecteDTO = insecteRepository.findRavageur(id,local);
+        Insecte insecteDTO = insecteRepository.findRavageur(id,local);
         return insecteDTO;
     }
 

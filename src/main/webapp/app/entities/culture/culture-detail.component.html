@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="culture">
+            <h2><span>Culture</span> {{culture.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom Culture</span></dt>
+                <dd>
+                    <span>{{culture.nomCulture}}</span>
+                </dd>
+                <dt><span>Image Culture</span></dt>
+                <dd>
+                    <span>{{culture.imageCulture}}</span>
+                </dd>
+                <dt><span>Maladie</span></dt>
+                <dd>
+                    <span *ngFor="let maladie of culture.maladies; let last = last">
+                        <a [routerLink]="['/maladie', maladie?.id, 'view' ]">{{maladie.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Herbe</span></dt>
+                <dd>
+                    <span *ngFor="let herbe of culture.herbes; let last = last">
+                        <a [routerLink]="['/herbe', herbe?.id, 'view' ]">{{herbe.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Zone</span></dt>
+                <dd>
+                    <span *ngFor="let zone of culture.zones; let last = last">
+                        <a [routerLink]="['/zone-geo', zone?.id, 'view' ]">{{zone.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Type Culture</span></dt>
+                <dd>
+                    <div *ngIf="culture.typeCultureId">
+                        <a [routerLink]="['/type-culture', culture.typeCultureId, 'view']">{{culture.typeCultureId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/culture', culture.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

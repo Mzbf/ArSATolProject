@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="maladie">
+            <h2><span>Maladie</span> {{maladie.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom Maladie</span></dt>
+                <dd>
+                    <span>{{maladie.nomMaladie}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{maladie.description}}</span>
+                </dd>
+                <dt><span>Images Maladie</span></dt>
+                <dd>
+                    <span>{{maladie.imagesMaladie}}</span>
+                </dd>
+                <dt><span>Maladie ML</span></dt>
+                <dd>
+                    <div *ngIf="maladie.maladieMLId">
+                        <a [routerLink]="['/methode-lutte', maladie.maladieMLId, 'view']">{{maladie.maladieMLId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/maladie', maladie.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

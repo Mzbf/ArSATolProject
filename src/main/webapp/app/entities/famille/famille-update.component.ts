@@ -8,7 +8,6 @@ import { IFamille } from 'app/shared/model/famille.model';
 import { FamilleService } from './famille.service';
 import { IOrdre } from 'app/shared/model/ordre.model';
 import { OrdreService } from 'app/entities/ordre';
-import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'jhi-famille-update',
@@ -17,7 +16,6 @@ import { FormGroup } from '@angular/forms';
 export class FamilleUpdateComponent implements OnInit {
     famille: IFamille;
     isSaving: boolean;
-    public image: any = File;
 
     ordres: IOrdre[];
 
@@ -55,26 +53,16 @@ export class FamilleUpdateComponent implements OnInit {
         this.dataUtils.setFileData(event, entity, field, isImage);
     }
 
-    onFileChange(event) {
-        const files = event.target.files[0];
-        this.image = files;
-    }
-
     previousState() {
         window.history.back();
     }
-    save(editForm: FormGroup) {
+
+    save() {
         this.isSaving = true;
-        if (editForm.valid) {
-            const fam = this.famille;
-            const formData = new FormData();
-            formData.append('famille', JSON.stringify(this.famille));
-            formData.append('file', this.image);
-            if (this.famille.id !== undefined) {
-                this.subscribeToSaveResponse(this.familleService.saveFamille(formData));
-            } else {
-                this.subscribeToSaveResponse(this.familleService.saveFamille(formData));
-            }
+        if (this.famille.id !== undefined) {
+            this.subscribeToSaveResponse(this.familleService.update(this.famille));
+        } else {
+            this.subscribeToSaveResponse(this.familleService.create(this.famille));
         }
     }
 

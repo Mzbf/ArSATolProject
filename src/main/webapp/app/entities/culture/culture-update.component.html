@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-culture-heading">Create or edit a Culture</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!culture.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="culture.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomCulture">Nom Culture</label>
+                    <input type="text" class="form-control" name="nomCulture" id="field_nomCulture"
+                        [(ngModel)]="culture.nomCulture" required/>
+                    <div [hidden]="!(editForm.controls.nomCulture?.dirty && editForm.controls.nomCulture?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomCulture?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_imageCulture">Image Culture</label>
+                    <input type="text" class="form-control" name="imageCulture" id="field_imageCulture"
+                        [(ngModel)]="culture.imageCulture" />
+                </div>
+
+                <div class="form-group">
+                    <label for="field_maladie">Maladie</label>
+                    <select class="form-control" id="field_maladie" multiple name="maladie" [(ngModel)]="culture.maladies">
+                        <option [ngValue]="getSelected(culture.maladies, maladieOption)" *ngFor="let maladieOption of maladies; trackBy: trackMaladieById">{{maladieOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_herbe">Herbe</label>
+                    <select class="form-control" id="field_herbe" multiple name="herbe" [(ngModel)]="culture.herbes">
+                        <option [ngValue]="getSelected(culture.herbes, herbeOption)" *ngFor="let herbeOption of herbes; trackBy: trackHerbeById">{{herbeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_zone">Zone</label>
+                    <select class="form-control" id="field_zone" multiple name="zone" [(ngModel)]="culture.zones">
+                        <option [ngValue]="getSelected(culture.zones, zoneGeoOption)" *ngFor="let zoneGeoOption of zonegeos; trackBy: trackZoneGeoById">{{zoneGeoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeCulture">Type Culture</label>
+                    <select class="form-control" id="field_typeCulture" name="typeCulture" [(ngModel)]="culture.typeCultureId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeCultureOption.id" *ngFor="let typeCultureOption of typecultures; trackBy: trackTypeCultureById">{{typeCultureOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

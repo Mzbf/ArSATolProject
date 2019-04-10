@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="insecteUtile">
+            <h2><span>Insecte Utile</span> {{insecteUtile.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Type Util</span></dt>
+                <dd>
+                    <div *ngIf="insecteUtile.typeUtilId">
+                        <a [routerLink]="['/insecte', insecteUtile.typeUtilId, 'view']">{{insecteUtile.typeUtilId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Chercheur</span></dt>
+                <dd>
+                    <div *ngIf="insecteUtile.chercheurId">
+                        <a [routerLink]="['/chercheur', insecteUtile.chercheurId, 'view']">{{insecteUtile.chercheurId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Famille</span></dt>
+                <dd>
+                    <div *ngIf="insecteUtile.familleId">
+                        <a [routerLink]="['/famille', insecteUtile.familleId, 'view']">{{insecteUtile.familleId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/insecte-utile', insecteUtile.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

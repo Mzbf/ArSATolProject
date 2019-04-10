@@ -15,14 +15,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "typeCulture",
-            "otherEntityName": "typeCulture",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "culture"
-        },
-        {
             "relationshipType": "one-to-many",
             "relationshipName": "imageculture",
             "otherEntityName": "imageCulture",
@@ -57,6 +49,12 @@
             "otherEntityName": "zoneGeo",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipName": "typeCulture",
+            "otherEntityName": "typeCulture",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190216191707",

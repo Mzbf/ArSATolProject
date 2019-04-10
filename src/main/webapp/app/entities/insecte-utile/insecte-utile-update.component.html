@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-insecte-utile-heading">Create or edit a Insecte Utile</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!insecteUtile.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="insecteUtile.id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeUtil">Type Util</label>
+                    <select class="form-control" id="field_typeUtil" name="typeUtil" [(ngModel)]="insecteUtile.typeUtilId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="insecteOption.id" *ngFor="let insecteOption of typeutils; trackBy: trackInsecteById">{{insecteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_chercheur">Chercheur</label>
+                    <select class="form-control" id="field_chercheur" name="chercheur" [(ngModel)]="insecteUtile.chercheurId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="chercheurOption.id" *ngFor="let chercheurOption of chercheurs; trackBy: trackChercheurById">{{chercheurOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_famille">Famille</label>
+                    <select class="form-control" id="field_famille" name="famille" [(ngModel)]="insecteUtile.familleId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="familleOption.id" *ngFor="let familleOption of familles; trackBy: trackFamilleById">{{familleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

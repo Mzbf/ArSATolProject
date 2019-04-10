@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-attaque-heading">Create or edit a Attaque</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!attaque.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="attaque.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <textarea class="form-control" name="description" id="field_description"
+                        [(ngModel)]="attaque.description" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_flag">Flag</label>
+                    <input type="checkbox" class="form-control" name="flag" id="field_flag"
+                        [(ngModel)]="attaque.flag" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_localisation">Localisation</label>
+                    <select class="form-control" name="localisation" [(ngModel)]="attaque.localisation" id="field_localisation" >
+                        <option value="FEUILLES">FEUILLES</option>
+                        <option value="FRUITS">FRUITS</option>
+                        <option value="FLEURES">FLEURES</option>
+                        <option value="TIGE">TIGE</option>
+                        <option value="RACINE">RACINE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateValidation">Date Validation</label>
+                    <div class="d-flex">
+                        <input id="field_dateValidation" type="datetime-local" class="form-control" name="dateValidation" [(ngModel)]="dateValidation" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateAjout">Date Ajout</label>
+                    <div class="d-flex">
+                        <input id="field_dateAjout" type="datetime-local" class="form-control" name="dateAjout" [(ngModel)]="dateAjout" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_imagesAttaque">Images Attaque</label>
+                    <input type="text" class="form-control" name="imagesAttaque" id="field_imagesAttaque"
+                        [(ngModel)]="attaque.imagesAttaque" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_insecte">Insecte</label>
+                    <select class="form-control" id="field_insecte" name="insecte" [(ngModel)]="attaque.insecteId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="insecteOption.id" *ngFor="let insecteOption of insectes; trackBy: trackInsecteById">{{insecteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_culture">Culture</label>
+                    <select class="form-control" id="field_culture" name="culture" [(ngModel)]="attaque.cultureId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cultureOption.id" *ngFor="let cultureOption of cultures; trackBy: trackCultureById">{{cultureOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_chercheur">Chercheur</label>
+                    <select class="form-control" id="field_chercheur" name="chercheur" [(ngModel)]="attaque.chercheurId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="chercheurOption.id" *ngFor="let chercheurOption of chercheurs; trackBy: trackChercheurById">{{chercheurOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeDegat">Type Degat</label>
+                    <select class="form-control" id="field_typeDegat" name="typeDegat" [(ngModel)]="attaque.typeDegatId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeDegatOption.id" *ngFor="let typeDegatOption of typedegats; trackBy: trackTypeDegatById">{{typeDegatOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

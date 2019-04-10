@@ -1,0 +1,27 @@
+{
+    "name": "Demo",
+    "fields": [
+        {
+            "fieldName": "imageDemo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "audio",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "videoDemo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190401173446",
+    "entityTableName": "demo",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

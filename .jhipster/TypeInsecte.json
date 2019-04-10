@@ -1,0 +1,30 @@
+{
+    "name": "TypeInsecte",
+    "fields": [
+        {
+            "fieldName": "nomTypeInsecte",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "typeInsecte",
+            "otherEntityName": "insecte",
+            "otherEntityRelationshipName": "typeInsecte"
+        }
+    ],
+    "changelogDate": "20190401173431",
+    "entityTableName": "type_insecte",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

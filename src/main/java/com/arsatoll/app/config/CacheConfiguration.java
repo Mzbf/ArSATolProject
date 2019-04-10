@@ -89,6 +89,8 @@ public class CacheConfiguration {
             cm.createCache(com.arsatoll.app.domain.Culture.class.getName() + ".maladies", jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.Culture.class.getName() + ".herbes", jcacheConfiguration);
             cm.createCache(com.arsatoll.app.domain.Insecte.class.getName() + ".listattaques", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.TypeInsecte.class.getName() + ".typeInsectes", jcacheConfiguration);
+            cm.createCache(com.arsatoll.app.domain.TypeCulture.class.getName() + ".typeCultures", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

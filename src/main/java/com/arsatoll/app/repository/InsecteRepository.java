@@ -21,6 +21,6 @@ import java.util.List;
 public interface InsecteRepository extends JpaRepository<Insecte, Long> {
 
     @Query("SELECT insecte FROM Insecte insecte ,Attaque attaque WHERE attaque.localisation=:local and attaque.culture.id=:id and  attaque.insecte=insecte.id")
-    InsecteDTO findRavageur(@Param("id") Long id ,@Param("local") Localisation local);
+    Insecte findRavageur(@Param("id") Long id, @Param("local") Localisation local);
 
 }

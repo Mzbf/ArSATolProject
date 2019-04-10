@@ -49,14 +49,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "typeInsecte",
-            "otherEntityName": "typeInsecte",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "insecte"
-        },
-        {
             "relationshipType": "one-to-many",
             "relationshipName": "insecte",
             "otherEntityName": "imageInsecte",
@@ -67,6 +59,12 @@
             "relationshipName": "listattaque",
             "otherEntityName": "attaque",
             "otherEntityRelationshipName": "insecte"
+        },
+        {
+            "relationshipName": "typeInsecte",
+            "otherEntityName": "typeInsecte",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190216191704",

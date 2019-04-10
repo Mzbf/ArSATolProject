@@ -1,0 +1,42 @@
+{
+    "name": "InsecteUtile",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "typeUtil",
+            "otherEntityName": "insecte",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "insecteUtile"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "culture",
+            "otherEntityName": "culture",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "cultureInsecteUtile"
+        },
+        {
+            "relationshipName": "chercheur",
+            "otherEntityName": "chercheur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "famille",
+            "otherEntityName": "famille",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190328180910",
+    "entityTableName": "insecte_utile",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

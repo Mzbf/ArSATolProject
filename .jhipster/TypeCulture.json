@@ -1,0 +1,30 @@
+{
+    "name": "TypeCulture",
+    "fields": [
+        {
+            "fieldName": "nomTypeCulture",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "typeCulture",
+            "otherEntityName": "culture",
+            "otherEntityRelationshipName": "typeCulture"
+        }
+    ],
+    "changelogDate": "20190401173437",
+    "entityTableName": "type_culture",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

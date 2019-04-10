@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="agriculteur">
+            <h2><span>Agriculteur</span> {{agriculteur.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Specialite</span></dt>
+                <dd>
+                    <span>{{agriculteur.specialite}}</span>
+                </dd>
+                <dt><span>Pays</span></dt>
+                <dd>
+                    <div *ngIf="agriculteur.paysId">
+                        <a [routerLink]="['/zone-geo', agriculteur.paysId, 'view']">{{agriculteur.paysId}}</a>
+                    </div>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{agriculteur.userId}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/agriculteur', agriculteur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

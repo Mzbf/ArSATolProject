@@ -135,8 +135,8 @@ relationship ManyToMany{
 relationship ManyToMany{
 	Culture{herbe} to Herbe{culture}
 }
-relationship OneToOne{
-	Culture{typeCulture} to TypeCulture
+relationship OneToMany{
+	TypeCulture{typeCulture} to Culture
 }
 relationship ManyToMany{
 	Culture{zone} to ZoneGeo{culture}
@@ -156,8 +156,8 @@ relationship OneToMany{
 relationship OneToMany{
 	Maladie{maladie} to ImageMaladie
 }
-relationship OneToOne{
-	Insecte{typeInsecte} to TypeInsecte
+relationship OneToMany{
+	TypeInsecte{typeInsecte} to Insecte
 }
 /* relationship  OneToOne{
 	InsecteRavageur{typeRav} to Insecte
@@ -221,3 +221,6 @@ service all with serviceImpl
 
 
 // SELECT nom_insecte FROM insecte I,attaque A WHERE A.localisation="FEUILLES" and A.culture_id=1 and A.insecte_id=I.id
+// Mapping des DTO
+// 
+// contrainte sur le nom de l'insecte pour eviter les doublons

@@ -13,9 +13,9 @@ export interface IInsecte {
     imageCycle?: string;
     dateValidation?: Moment;
     dateAjout?: Moment;
-    typeInsecteId?: number;
     insectes?: IImageInsecte[];
     listattaques?: IAttaque[];
+    typeInsecteId?: number;
 }
 
 export class Insecte implements IInsecte {
@@ -30,8 +30,8 @@ export class Insecte implements IInsecte {
         public imageCycle?: string,
         public dateValidation?: Moment,
         public dateAjout?: Moment,
-        public typeInsecteId?: number,
         public insectes?: IImageInsecte[],
-        public listattaques?: IAttaque[]
+        public listattaques?: IAttaque[],
+        public typeInsecteId?: number
     ) {}
 }

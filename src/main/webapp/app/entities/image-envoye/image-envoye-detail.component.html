@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="imageEnvoye">
+            <h2><span>Image Envoye</span> {{imageEnvoye.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Url Image</span></dt>
+                <dd>
+                    <span>{{imageEnvoye.urlImage}}</span>
+                </dd>
+                <dt><span>Date D Ajout</span></dt>
+                <dd>
+                    <span>{{imageEnvoye.dateDAjout}}</span>
+                </dd>
+                <dt><span>Date Validation</span></dt>
+                <dd>
+                    <span>{{imageEnvoye.dateValidation}}</span>
+                </dd>
+                <dt><span>Flag</span></dt>
+                <dd>
+                    <span>{{imageEnvoye.flag}}</span>
+                </dd>
+                <dt><span>Agriculteur</span></dt>
+                <dd>
+                    <div *ngIf="imageEnvoye.agriculteurId">
+                        <a [routerLink]="['/agriculteur', imageEnvoye.agriculteurId, 'view']">{{imageEnvoye.agriculteurId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/image-envoye', imageEnvoye.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

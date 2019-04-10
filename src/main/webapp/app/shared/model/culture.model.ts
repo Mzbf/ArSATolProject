@@ -8,12 +8,12 @@ export interface ICulture {
     id?: number;
     nomCulture?: string;
     imageCulture?: string;
-    typeCultureId?: number;
     imagecultures?: IImageCulture[];
     listattaques?: IAttaque[];
     maladies?: IMaladie[];
     herbes?: IHerbe[];
     zones?: IZoneGeo[];
+    typeCultureId?: number;
 }
 
 export class Culture implements ICulture {
@@ -21,11 +21,11 @@ export class Culture implements ICulture {
         public id?: number,
         public nomCulture?: string,
         public imageCulture?: string,
-        public typeCultureId?: number,
         public imagecultures?: IImageCulture[],
         public listattaques?: IAttaque[],
         public maladies?: IMaladie[],
         public herbes?: IHerbe[],
-        public zones?: IZoneGeo[]
+        public zones?: IZoneGeo[],
+        public typeCultureId?: number
     ) {}
 }

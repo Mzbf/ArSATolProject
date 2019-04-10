@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="insecte">
+            <h2><span>Insecte</span> {{insecte.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nom Insecte</span></dt>
+                <dd>
+                    <span>{{insecte.nomInsecte}}</span>
+                </dd>
+                <dt><span>Nom Scien Insecte</span></dt>
+                <dd>
+                    <span>{{insecte.nomScienInsecte}}</span>
+                </dd>
+                <dt><span>Insecte Image</span></dt>
+                <dd>
+                    <span>{{insecte.insecteImage}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{insecte.description}}</span>
+                </dd>
+                <dt><span>Cycle Bio</span></dt>
+                <dd>
+                    <span>{{insecte.cycleBio}}</span>
+                </dd>
+                <dt><span>Autre Plante</span></dt>
+                <dd>
+                    <span>{{insecte.autrePlante}}</span>
+                </dd>
+                <dt><span>Image Cycle</span></dt>
+                <dd>
+                    <span>{{insecte.imageCycle}}</span>
+                </dd>
+                <dt><span>Date Validation</span></dt>
+                <dd>
+                    <span>{{insecte.dateValidation}}</span>
+                </dd>
+                <dt><span>Date Ajout</span></dt>
+                <dd>
+                    <span>{{insecte.dateAjout}}</span>
+                </dd>
+                <dt><span>Type Insecte</span></dt>
+                <dd>
+                    <div *ngIf="insecte.typeInsecteId">
+                        <a [routerLink]="['/type-insecte', insecte.typeInsecteId, 'view']">{{insecte.typeInsecteId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/insecte', insecte.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

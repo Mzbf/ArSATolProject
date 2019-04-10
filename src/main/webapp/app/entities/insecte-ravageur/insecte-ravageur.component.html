@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span>Insecte Ravageurs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-insecte-ravageur" [routerLink]="['/insecte-ravageur/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Insecte Ravageur
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="insecteRavageurs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Type Rav</span></th>
+            <th><span>Ravageur ML</span></th>
+            <th><span>Chercheur</span></th>
+            <th><span>Famille</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let insecteRavageur of insecteRavageurs ;trackBy: trackId">
+                <td><a [routerLink]="['/insecte-ravageur', insecteRavageur.id, 'view' ]">{{insecteRavageur.id}}</a></td>
+                <td>
+                    <div *ngIf="insecteRavageur.typeRavId">
+                        <a [routerLink]="['../insecte', insecteRavageur.typeRavId , 'view' ]" >{{insecteRavageur.typeRavId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="insecteRavageur.ravageurMLId">
+                        <a [routerLink]="['../methode-lutte', insecteRavageur.ravageurMLId , 'view' ]" >{{insecteRavageur.ravageurMLId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="insecteRavageur.chercheurId">
+                        <a [routerLink]="['../chercheur', insecteRavageur.chercheurId , 'view' ]" >{{insecteRavageur.chercheurId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="insecteRavageur.familleId">
+                        <a [routerLink]="['../famille', insecteRavageur.familleId , 'view' ]" >{{insecteRavageur.familleId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/insecte-ravageur', insecteRavageur.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/insecte-ravageur', insecteRavageur.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'insecte-ravageur', { outlets: { popup: insecteRavageur.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

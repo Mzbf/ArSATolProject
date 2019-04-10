@@ -1,0 +1,50 @@
+{
+    "name": "Herbe",
+    "fields": [
+        {
+            "fieldName": "nomHerbe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imagesHerbe",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "herbeML",
+            "otherEntityName": "methodeLutte",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "herbe"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "herbe",
+            "otherEntityName": "imageHerbe",
+            "otherEntityRelationshipName": "herbe"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "culture",
+            "otherEntityName": "culture",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "herbe"
+        }
+    ],
+    "changelogDate": "20190328180913",
+    "entityTableName": "herbe",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,38 @@
+{
+    "name": "ImageEnvoye",
+    "fields": [
+        {
+            "fieldName": "urlImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateDAjout",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateValidation",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "flag",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "agriculteur",
+            "otherEntityName": "agriculteur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190328180917",
+    "entityTableName": "image_envoye",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

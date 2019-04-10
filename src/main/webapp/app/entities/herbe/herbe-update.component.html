@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-herbe-heading">Create or edit a Herbe</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!herbe.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="herbe.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomHerbe">Nom Herbe</label>
+                    <input type="text" class="form-control" name="nomHerbe" id="field_nomHerbe"
+                        [(ngModel)]="herbe.nomHerbe" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <textarea class="form-control" name="description" id="field_description"
+                        [(ngModel)]="herbe.description" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_imagesHerbe">Images Herbe</label>
+                    <input type="text" class="form-control" name="imagesHerbe" id="field_imagesHerbe"
+                        [(ngModel)]="herbe.imagesHerbe" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_herbeML">Herbe ML</label>
+                    <select class="form-control" id="field_herbeML" name="herbeML" [(ngModel)]="herbe.herbeMLId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="methodeLutteOption.id" *ngFor="let methodeLutteOption of herbemls; trackBy: trackMethodeLutteById">{{methodeLutteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

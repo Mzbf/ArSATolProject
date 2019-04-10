@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-insecte-heading">Create or edit a Insecte</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!insecte.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="insecte.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomInsecte">Nom Insecte</label>
+                    <input type="text" class="form-control" name="nomInsecte" id="field_nomInsecte"
+                        [(ngModel)]="insecte.nomInsecte" required/>
+                    <div [hidden]="!(editForm.controls.nomInsecte?.dirty && editForm.controls.nomInsecte?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomInsecte?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomScienInsecte">Nom Scien Insecte</label>
+                    <input type="text" class="form-control" name="nomScienInsecte" id="field_nomScienInsecte"
+                        [(ngModel)]="insecte.nomScienInsecte" required/>
+                    <div [hidden]="!(editForm.controls.nomScienInsecte?.dirty && editForm.controls.nomScienInsecte?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nomScienInsecte?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_insecteImage">Insecte Image</label>
+                    <input type="text" class="form-control" name="insecteImage" id="field_insecteImage"
+                        [(ngModel)]="insecte.insecteImage" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <textarea class="form-control" name="description" id="field_description"
+                        [(ngModel)]="insecte.description" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cycleBio">Cycle Bio</label>
+                    <textarea class="form-control" name="cycleBio" id="field_cycleBio"
+                        [(ngModel)]="insecte.cycleBio" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_autrePlante">Autre Plante</label>
+                    <textarea class="form-control" name="autrePlante" id="field_autrePlante"
+                        [(ngModel)]="insecte.autrePlante" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_imageCycle">Image Cycle</label>
+                    <input type="text" class="form-control" name="imageCycle" id="field_imageCycle"
+                        [(ngModel)]="insecte.imageCycle" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateValidation">Date Validation</label>
+                    <div class="d-flex">
+                        <input id="field_dateValidation" type="datetime-local" class="form-control" name="dateValidation" [(ngModel)]="dateValidation" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateAjout">Date Ajout</label>
+                    <div class="d-flex">
+                        <input id="field_dateAjout" type="datetime-local" class="form-control" name="dateAjout" [(ngModel)]="dateAjout" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeInsecte">Type Insecte</label>
+                    <select class="form-control" id="field_typeInsecte" name="typeInsecte" [(ngModel)]="insecte.typeInsecteId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeInsecteOption.id" *ngFor="let typeInsecteOption of typeinsectes; trackBy: trackTypeInsecteById">{{typeInsecteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

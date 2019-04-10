@@ -1,0 +1,29 @@
+{
+    "name": "TypeDegat",
+    "fields": [
+        {
+            "fieldName": "typeDeg",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "degat",
+            "otherEntityName": "attaque",
+            "otherEntityRelationshipName": "typeDegat"
+        }
+    ],
+    "changelogDate": "20190328180922",
+    "entityTableName": "type_degat",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
