@@ -31,7 +31,7 @@
         "dtoSuffix": "DTO",
         "otherModules": [],
         "enableTranslation": false,
-        "herokuAppName": "arsatollservice",
+        "herokuAppName": "lit-mesa-69022",
         "herokuDeployType": "git"
     }
 }
