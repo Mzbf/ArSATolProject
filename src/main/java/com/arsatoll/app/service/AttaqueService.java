@@ -1,5 +1,6 @@
 package com.arsatoll.app.service;
 
+import com.arsatoll.app.domain.enumeration.Localisation;
 import com.arsatoll.app.service.dto.AttaqueDTO;
 
 import java.util.List;
@@ -40,4 +41,6 @@ public interface AttaqueService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    List<AttaqueDTO> findAttaque(Long id, Localisation local);
 }

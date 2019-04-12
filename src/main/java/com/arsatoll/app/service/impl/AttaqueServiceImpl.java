@@ -1,5 +1,6 @@
 package com.arsatoll.app.service.impl;
 
+import com.arsatoll.app.domain.enumeration.Localisation;
 import com.arsatoll.app.service.AttaqueService;
 import com.arsatoll.app.domain.Attaque;
 import com.arsatoll.app.repository.AttaqueRepository;
@@ -85,5 +86,14 @@ public class AttaqueServiceImpl implements AttaqueService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete Attaque : {}", id);        attaqueRepository.deleteById(id);
+    }
+    @Override
+    public List<AttaqueDTO> findAttaque(Long id, Localisation local){
+
+        log.debug("Request to find list Attaque : {}", id,local);
+
+        return attaqueRepository.listeAttaque(id,local).stream()
+            .map(attaqueMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 }

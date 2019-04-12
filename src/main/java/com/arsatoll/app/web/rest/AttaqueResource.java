@@ -1,4 +1,8 @@
 package com.arsatoll.app.web.rest;
+import com.arsatoll.app.domain.Attaque;
+import com.arsatoll.app.domain.Insecte;
+import com.arsatoll.app.domain.enumeration.Localisation;
+import com.arsatoll.app.repository.AttaqueRepository;
 import com.arsatoll.app.service.AttaqueService;
 import com.arsatoll.app.web.rest.errors.BadRequestAlertException;
 import com.arsatoll.app.web.rest.util.HeaderUtil;
@@ -28,8 +32,11 @@ public class AttaqueResource {
 
     private final AttaqueService attaqueService;
 
+    private final AttaqueRepository attaqueRepository;
+
     public AttaqueResource(AttaqueService attaqueService) {
         this.attaqueService = attaqueService;
+        attaqueRepository = null;
     }
 
     /**
@@ -50,6 +57,8 @@ public class AttaqueResource {
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+
+
 
     /**
      * PUT  /attaques : Updates an existing attaque.
@@ -94,6 +103,13 @@ public class AttaqueResource {
         log.debug("REST request to get Attaque : {}", id);
         Optional<AttaqueDTO> attaqueDTO = attaqueService.findOne(id);
         return ResponseUtil.wrapOrNotFound(attaqueDTO);
+    }
+
+    @GetMapping("/listattaque/{culture}/{local}")
+    public List<AttaqueDTO> attaqueList(@PathVariable Long culture,@PathVariable Localisation local) {
+        log.debug("REST request to get Attaque : {}", culture,local);
+        List<AttaqueDTO> attaque = attaqueService.findAttaque(culture,local);
+        return attaque;
     }
 
     /**

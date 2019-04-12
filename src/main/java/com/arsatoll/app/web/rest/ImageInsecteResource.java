@@ -24,6 +24,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import static org.hibernate.id.IdentifierGenerator.ENTITY_NAME;
+
 /**
  * REST controller for managing ImageInsecte.
  */

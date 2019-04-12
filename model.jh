@@ -2,7 +2,6 @@ entity Insecte {
 	
 	nomInsecte String required,
     nomScienInsecte String required,
-	insecteImage String,
 	description TextBlob,
     cycleBio TextBlob,
 	autrePlante TextBlob,
@@ -12,7 +11,7 @@ entity Insecte {
 }
 
 entity TypeInsecte{
-	nomTypeInsecte String,
+	nomTypeInsecte String required,
 	description String
 }
 
@@ -24,21 +23,18 @@ entity InsecteRavageur {
 }  */
 
 entity Maladie{
-	nomMaladie String,
-    description TextBlob,
-    imagesMaladie String
+	nomMaladie String required,
+    description TextBlob
 }
 entity Herbe{
-	nomHerbe String,
-    description TextBlob,
-    imagesHerbe String
+	nomHerbe String required,
+    description TextBlob
 }
 entity Culture {
-	nomCulture String required,
-	imageCulture String
+	nomCulture String required
 }
 entity TypeCulture{
-	nomTypeCulture String,
+	nomTypeCulture String required,
 	description String
 }
 entity ZoneGeo{
@@ -51,8 +47,7 @@ entity Attaque {
     flag Boolean,
     localisation Localisation
 	dateValidation Instant,
-    dateAjout Instant,
-	imagesAttaque String
+    dateAjout Instant
 }
 entity MethodeLutte{
 	type String,

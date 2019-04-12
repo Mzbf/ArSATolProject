@@ -5,16 +5,25 @@ import com.arsatoll.app.domain.ImageInsecte;
 import com.arsatoll.app.repository.ImageInsecteRepository;
 import com.arsatoll.app.service.dto.ImageInsecteDTO;
 import com.arsatoll.app.service.mapper.ImageInsecteMapper;
+import com.arsatoll.app.web.rest.errors.BadRequestAlertException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static org.hibernate.id.IdentifierGenerator.ENTITY_NAME;
 
 /**
  * Service Implementation for managing ImageInsecte.
@@ -86,4 +95,6 @@ public class ImageInsecteServiceImpl implements ImageInsecteService {
     public void delete(Long id) {
         log.debug("Request to delete ImageInsecte : {}", id);        imageInsecteRepository.deleteById(id);
     }
+
+
 }
