@@ -4,6 +4,7 @@ import com.arsatoll.app.service.dto.CultureDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,4 +50,6 @@ public interface CultureService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    List<Object> cultureImage();
 }

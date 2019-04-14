@@ -27,4 +27,7 @@ public interface CultureRepository extends JpaRepository<Culture, Long> {
     @Query("select culture from Culture culture left join fetch culture.maladies left join fetch culture.herbes left join fetch culture.zones where culture.id =:id")
     Optional<Culture> findOneWithEagerRelationships(@Param("id") Long id);
 
+    @Query("select culture , image.imageUrl from Culture culture, ImageCulture image where culture.id=image.culture.id")
+    List<Object> cultureImage();
+
 }

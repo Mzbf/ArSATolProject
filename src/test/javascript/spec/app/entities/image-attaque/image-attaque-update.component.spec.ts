@@ -7,12 +7,14 @@ import { ArsatollserviceTestModule } from '../../../test.module';
 import { ImageAttaqueUpdateComponent } from 'app/entities/image-attaque/image-attaque-update.component';
 import { ImageAttaqueService } from 'app/entities/image-attaque/image-attaque.service';
 import { ImageAttaque } from 'app/shared/model/image-attaque.model';
+import { FormGroup } from '@angular/forms';
 
 describe('Component Tests', () => {
     describe('ImageAttaque Management Update Component', () => {
         let comp: ImageAttaqueUpdateComponent;
         let fixture: ComponentFixture<ImageAttaqueUpdateComponent>;
         let service: ImageAttaqueService;
+        let editForm: FormGroup;
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -34,7 +36,7 @@ describe('Component Tests', () => {
                 spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
                 comp.imageAttaque = entity;
                 // WHEN
-                comp.save();
+                comp.save(editForm);
                 tick(); // simulate async
 
                 // THEN
@@ -48,7 +50,7 @@ describe('Component Tests', () => {
                 spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
                 comp.imageAttaque = entity;
                 // WHEN
-                comp.save();
+                comp.save(editForm);
                 tick(); // simulate async
 
                 // THEN

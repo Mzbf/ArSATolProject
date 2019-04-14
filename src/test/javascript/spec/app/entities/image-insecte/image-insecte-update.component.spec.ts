@@ -7,12 +7,14 @@ import { ArsatollserviceTestModule } from '../../../test.module';
 import { ImageInsecteUpdateComponent } from 'app/entities/image-insecte/image-insecte-update.component';
 import { ImageInsecteService } from 'app/entities/image-insecte/image-insecte.service';
 import { ImageInsecte } from 'app/shared/model/image-insecte.model';
+import { FormGroup } from '@angular/forms';
 
 describe('Component Tests', () => {
     describe('ImageInsecte Management Update Component', () => {
         let comp: ImageInsecteUpdateComponent;
         let fixture: ComponentFixture<ImageInsecteUpdateComponent>;
         let service: ImageInsecteService;
+        let edit: FormGroup;
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -34,7 +36,7 @@ describe('Component Tests', () => {
                 spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
                 comp.imageInsecte = entity;
                 // WHEN
-                comp.save();
+                comp.save(edit);
                 tick(); // simulate async
 
                 // THEN
@@ -48,7 +50,7 @@ describe('Component Tests', () => {
                 spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
                 comp.imageInsecte = entity;
                 // WHEN
-                comp.save();
+                comp.save(edit);
                 tick(); // simulate async
 
                 // THEN

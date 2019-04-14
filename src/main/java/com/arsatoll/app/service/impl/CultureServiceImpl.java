@@ -97,4 +97,9 @@ public class CultureServiceImpl implements CultureService {
     public void delete(Long id) {
         log.debug("Request to delete Culture : {}", id);        cultureRepository.deleteById(id);
     }
+
+    @Override
+    public List<Object> cultureImage() {
+        return cultureRepository.cultureImage();
+    }
 }

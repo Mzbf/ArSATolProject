@@ -2,6 +2,7 @@ package com.arsatoll.app.service;
 
 import com.arsatoll.app.domain.enumeration.Localisation;
 import com.arsatoll.app.service.dto.AttaqueDTO;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,4 +44,6 @@ public interface AttaqueService {
     void delete(Long id);
 
     List<AttaqueDTO> findAttaque(Long id, Localisation local);
+
+    List<Object> attaqueComplet(Long id, Localisation local);
 }

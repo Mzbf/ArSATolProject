@@ -7,12 +7,14 @@ import { ArsatollserviceTestModule } from '../../../test.module';
 import { ImageCultureUpdateComponent } from 'app/entities/image-culture/image-culture-update.component';
 import { ImageCultureService } from 'app/entities/image-culture/image-culture.service';
 import { ImageCulture } from 'app/shared/model/image-culture.model';
+import { FormGroup } from '@angular/forms';
 
 describe('Component Tests', () => {
     describe('ImageCulture Management Update Component', () => {
         let comp: ImageCultureUpdateComponent;
         let fixture: ComponentFixture<ImageCultureUpdateComponent>;
         let service: ImageCultureService;
+        let edit: FormGroup;
 
         beforeEach(() => {
             TestBed.configureTestingModule({
@@ -34,7 +36,7 @@ describe('Component Tests', () => {
                 spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
                 comp.imageCulture = entity;
                 // WHEN
-                comp.save();
+                comp.save(edit);
                 tick(); // simulate async
 
                 // THEN
@@ -48,7 +50,7 @@ describe('Component Tests', () => {
                 spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
                 comp.imageCulture = entity;
                 // WHEN
-                comp.save();
+                comp.save(edit);
                 tick(); // simulate async
 
                 // THEN

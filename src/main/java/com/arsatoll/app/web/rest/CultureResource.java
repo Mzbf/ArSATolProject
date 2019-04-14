@@ -73,6 +73,8 @@ public class CultureResource {
             .body(result);
     }
 
+
+
     /**
      * GET  /cultures : get all the cultures.
      *
@@ -83,6 +85,12 @@ public class CultureResource {
     public List<CultureDTO> getAllCultures(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Cultures");
         return cultureService.findAll();
+    }
+
+    @GetMapping("/culturesImage")
+    public List<Object> getAllCulImages() {
+        log.debug("REST request to get all Cultures");
+        return cultureService.cultureImage();
     }
 
     /**

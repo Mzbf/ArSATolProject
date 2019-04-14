@@ -6,9 +6,11 @@ import com.arsatoll.app.domain.Attaque;
 import com.arsatoll.app.repository.AttaqueRepository;
 import com.arsatoll.app.service.dto.AttaqueDTO;
 import com.arsatoll.app.service.mapper.AttaqueMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -96,4 +98,11 @@ public class AttaqueServiceImpl implements AttaqueService {
             .map(attaqueMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
+
+    @Override
+    public List<Object> attaqueComplet(Long id, Localisation local) {
+        return attaqueRepository.attaqueImage(id,local);
+    }
+
+
 }

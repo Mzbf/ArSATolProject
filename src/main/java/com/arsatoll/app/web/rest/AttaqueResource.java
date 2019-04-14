@@ -7,10 +7,13 @@ import com.arsatoll.app.service.AttaqueService;
 import com.arsatoll.app.web.rest.errors.BadRequestAlertException;
 import com.arsatoll.app.web.rest.util.HeaderUtil;
 import com.arsatoll.app.service.dto.AttaqueDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -109,6 +112,18 @@ public class AttaqueResource {
     public List<AttaqueDTO> attaqueList(@PathVariable Long culture,@PathVariable Localisation local) {
         log.debug("REST request to get Attaque : {}", culture,local);
         List<AttaqueDTO> attaque = attaqueService.findAttaque(culture,local);
+        return attaque;
+    }
+
+    @GetMapping(value = "/listattaquecomplet/{culture}/{local}",
+        produces = { MimeTypeUtils.APPLICATION_JSON_VALUE },
+        headers = "Accept=application/json")
+    public List<Object> attaqueInfos(@PathVariable Long culture, @PathVariable Localisation local) {
+        log.debug("REST request to get Attaque : {}", culture,local);
+        List<Object> attaque = attaqueService.attaqueComplet(culture,local);
+        System.out.println(attaque.get(1).toString());
+      //  List<JSONObject> attaquejson = new ObjectMapper().readValue()
+
         return attaque;
     }
 
