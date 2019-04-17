@@ -6,10 +6,15 @@ import com.arsatoll.app.service.dto.CultureDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -104,6 +109,15 @@ public class CultureResource {
         log.debug("REST request to get Culture : {}", id);
         Optional<CultureDTO> cultureDTO = cultureService.findOne(id);
         return ResponseUtil.wrapOrNotFound(cultureDTO);
+    }
+    @RequestMapping(value = "/imagesRessource/{urlimage}", method = RequestMethod.GET,
+        produces = MediaType.IMAGE_JPEG_VALUE)
+
+    public void getImage(HttpServletResponse response,@PathVariable String urlimage) throws IOException {
+
+        ClassPathResource imgFile = new ClassPathResource("images/"+urlimage);
+        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        StreamUtils.copy(imgFile.getInputStream(), response.getOutputStream());
     }
 
     /**

@@ -20,6 +20,6 @@ public interface AttaqueRepository extends JpaRepository<Attaque, Long> {
     @Query("SELECT attaque FROM Attaque attaque WHERE attaque.culture.id=:culture and attaque.localisation=:local")
     List<Attaque> listeAttaque(@Param("culture") Long culture,@Param("local") Localisation local);
 
-    @Query("SELECT A.description as desc, I.nomInsecte as nominsecte, imageattaque.imageUrl as image FROM Attaque A, Insecte I, ImageAttaque imageattaque WHERE A.culture.id=:cultureid and A.localisation=:local and A.id=imageattaque.attaque.id and A.insecte.id=I.id")
+    @Query("SELECT attaque FROM Attaque attaque, Insecte I WHERE attaque.culture.id=:cultureid and attaque.localisation=:local and attaque.insecte.id=I.id")
     List<Object> attaqueImage(@Param("cultureid") Long cultureid, @Param("local") Localisation local);
 }

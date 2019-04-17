@@ -111,6 +111,11 @@ public class ImageAttaqueResource {
         log.debug("REST request to get all ImageAttaques");
         return imageAttaqueService.findAll();
     }
+    @GetMapping("/imageAttaques/{id}")
+    public List<ImageAttaqueDTO> getAllImaAttaque(@PathVariable Long id) {
+        log.debug("REST request to get all ImageAttaques");
+        return imageAttaqueService.listImageAttaque(id);
+    }
 
     /**
      * GET  /image-attaques/:id : get the "id" imageAttaque.

@@ -39,7 +39,7 @@
     <include file="config/liquibase/changelog/20190328180910_added_entity_constraints_InsecteUtile.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190328180911_added_entity_constraints_InsecteRavageur.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191707_added_entity_constraints_Culture.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190216191706_added_entity_constraints_MethodeLutte.xml" relativeToChangelogFile="false"/>
+    <!--<include file="config/liquibase/changelog/20190216191706_added_entity_constraints_MethodeLutte.xml" relativeToChangelogFile="false"/>-->
     <include file="config/liquibase/changelog/20190328180917_added_entity_constraints_ImageEnvoye.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191712_added_entity_constraints_Agriculteur.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190216191713_added_entity_constraints_Chercheur.xml" relativeToChangelogFile="false"/>

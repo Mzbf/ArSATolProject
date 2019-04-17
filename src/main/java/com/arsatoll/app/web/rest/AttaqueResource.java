@@ -121,7 +121,7 @@ public class AttaqueResource {
     public List<Object> attaqueInfos(@PathVariable Long culture, @PathVariable Localisation local) {
         log.debug("REST request to get Attaque : {}", culture,local);
         List<Object> attaque = attaqueService.attaqueComplet(culture,local);
-        System.out.println(attaque.get(1).toString());
+
       //  List<JSONObject> attaquejson = new ObjectMapper().readValue()
 
         return attaque;

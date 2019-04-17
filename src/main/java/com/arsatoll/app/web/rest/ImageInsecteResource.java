@@ -72,7 +72,7 @@ public class ImageInsecteResource {
         }
         String nomImage = file.getOriginalFilename();
         String nomImageModife = FilenameUtils.getBaseName(nomImage)+"_"+System.currentTimeMillis()+"."+FilenameUtils.getExtension(nomImage);
-        File path = new File("/home/mzbf/arsatoll/arsatollservice/image/ImageInsecte"+ nomImageModife);
+        File path = new File("/home/mzbf/arsatoll/arsatollservice/image"+ nomImageModife);
 
         FileUtils.writeByteArrayToFile(path,file.getBytes());
 

@@ -84,6 +84,13 @@ public class ImageAttaqueServiceImpl implements ImageAttaqueService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete ImageAttaque : {}", id);        imageAttaqueRepository.deleteById(id);
+        log.debug("Request to delete ImageAttaque : {}", id);
+        imageAttaqueRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ImageAttaqueDTO> listImageAttaque(Long id) {
+        return imageAttaqueRepository.listImageAttaque(id).stream().map(imageAttaqueMapper::toDto) .collect(Collectors.toCollection(LinkedList::new));
     }
 }
